@@ -1,0 +1,131 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using IBCUtils;
+using IBCDLL.DAL;
+using IBCDLL.AgentReport;
+using System.Collections;
+using System.Collections.Generic;
+
+/// <summary>
+/// Summary description for AgentBetSummary
+/// </summary>
+public class AgentBetSummaryRow
+{
+    public AgentBetSummaryRow()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
+    public string EventDate;
+    public string Event;
+    public string Choice;
+    public double TotalBet;
+    public double TotalStake;
+    public double Winning;
+    public string Status;
+}
+
+public class AgentBetSummary:IbcError
+{
+    public AgentBetSummaryRow[] Rows;
+
+    public static AgentBetSummary GetReport(string username, string fromdate, string todate, string language)
+    {
+        AgentBetSummary report = new AgentBetSummary();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        DateTime fdate, tdate;
+        if (!Validator.ValidDateMMDDYYYY(fromdate, out fdate).IsSuccess() || !Validator.ValidDateMMDDYYYY(todate, out tdate).IsSuccess())
+        {
+            report.ErrorCode = IbcError.DATE_INVALID_FORMAT;
+            report.ErrorMsg = IbcError.DATE_INVALID_FORMAT_MSG;
+            return report;
+        }
+        Hashtable param = new Hashtable();
+        param.Add("username", username);
+        param.Add("fromdate", fdate);
+        param.Add("todate", tdate);
+        param.Add("language", language);
+        using (IDataReader dr = DataServices.ExecuteReader("BetTransSelSummaryPB", param, DatabaseType.ARCHIVE))
+        {
+            if (dr == null)
+            {
+                report.ErrorCode = IbcError.INTERNAL_ERROR;
+                report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+            }
+            else
+            {
+                List<AgentBetSummaryRow> reportRow = new List<AgentBetSummaryRow>();
+                string betteam;
+                int bettype;
+                double winning;
+                while (dr.Read())
+                {
+                    AgentBetSummaryRow row = new AgentBetSummaryRow();
+                    row.EventDate = dr["eventdate"].ToString();
+                    row.Event = dr["home"].ToString() + "-vs-" + dr["away"].ToString();
+                    bettype = FormatHandler.GetInt(dr["bettype"]);
+                    betteam = dr["betteam"].ToString();
+                    row.TotalBet = FormatHandler.GetDouble(dr["totalbet"],2);
+                    row.TotalStake = FormatHandler.GetDouble(dr["totalstake"],2);
+                    row.Status = dr["status"].ToString();
+                    winning = FormatHandler.GetDouble(dr["winning"]) - FormatHandler.GetDouble(dr["totalstake"]);
+                    if (winning > 0)
+                    {
+                        row.Winning = FormatHandler.GetDouble(winning,2);
+                    }
+                    else
+                    {
+                        row.Winning = 0;
+                    }
+                    if (bettype == 1 || bettype == 7)
+                    {
+                        if (betteam == "h")
+                        {
+                            row.Choice = dr["home"].ToString();
+                        }
+                        else
+                        {
+                            row.Choice = dr["away"].ToString();
+                        }
+                    }
+                    else if (bettype == 3 || bettype == 8)
+                    {
+                        if (betteam == "h")
+                        {
+                            row.Choice = "Over";
+                        }
+                        else
+                        {
+                            row.Choice = "Under";
+                        }
+                    }
+                    else if (bettype == 2)
+                    {
+                        if (betteam == "h")
+                        {
+                            row.Choice = "Odd";
+                        }
+                        else
+                        {
+                            row.Choice = "Even";
+                        }
+                    }
+                    reportRow.Add(row);
+                }// end while
+                report.Rows = reportRow.ToArray();
+                report.ErrorCode = IbcError.SUCCESS;
+                report.ErrorMsg = IbcError.SUCCESS_MSG;
+            }// end if(dr==null)
+        }//end using
+        return report;
+    }
+}

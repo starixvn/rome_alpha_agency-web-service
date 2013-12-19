@@ -1,0 +1,50 @@
+﻿
+using System;
+using log4net;
+using log4net.Config;
+using log4net.Core;
+
+public static class LogService
+{
+    #region Members
+    private static readonly ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    #endregion
+
+    #region Constructors
+    static LogService()
+    {
+        BasicConfigurator.Configure();
+        XmlConfigurator.Configure();
+    }
+    #endregion
+
+    #region Methods
+
+    ///
+    ///
+    ///
+    ///
+    /// <param name="logLevel" />
+    ///
+    public static void WriteLog(Level logLevel, object log)
+    {
+        if (logLevel.Equals(Level.Debug))
+            logger.Debug(log);
+        else if (logLevel.Equals(Level.Error))
+            logger.Error(log);
+        else if (logLevel.Equals(Level.Fatal))
+            logger.Fatal(log);
+        else if (logLevel.Equals(Level.Info))
+            logger.Info(log);
+        else if (logLevel.Equals(Level.Warn))
+            logger.Warn(log);
+
+    }
+
+    public static void WriteLog(object log)
+    {
+        WriteLog(Level.Error, log);
+    }
+
+    #endregion
+}

@@ -1,0 +1,143 @@
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Collections;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using IBCUtils;
+using IBCDLL.DAL;
+using IBCDLL.AgentReport;
+
+
+public class MasterWinLossOldRow
+{
+    public string MasterId;
+    public double Turnover = 0;
+    public double GrossCommission = 0;
+    public double MemberWinLoss = 0;
+    public double MemberCommission = 0;
+    public double MemberTotal = 0;
+    public double AgentWinLoss = 0;
+    public double AgentCommission = 0;
+    public double AgentTotal = 0;
+    public double MasterWinLoss = 0;
+    public double MasterCommission = 0;
+    public double MasterTotal = 0;
+    public double SuperWinLoss = 0;
+    public double SuperCommission = 0;
+    public double SuperTotal = 0;
+    public double CompanyTotal = 0;
+}
+public class SuperMasterWinLossOld : IbcError
+{
+    public MasterWinLossOldRow[] Rows;
+
+    public static SuperMasterWinLossOld GetReport(int custId, string fromdate, string todate)
+    {
+        SuperMasterWinLossOld report = new SuperMasterWinLossOld();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        DateTime fdate, tdate;
+        if (!Validator.ValidDateMMDDYYYY(fromdate, out fdate).IsSuccess() || !Validator.ValidDateMMDDYYYY(todate, out tdate).IsSuccess())
+        {
+            report.ErrorCode = IbcError.DATE_INVALID_FORMAT;
+            report.ErrorMsg = IbcError.DATE_INVALID_FORMAT_MSG;
+            return report;
+        }
+        Hashtable param = new Hashtable();
+        param.Add("srecommend", custId);
+        param.Add("fromdate", fdate);
+        param.Add("todate", tdate);
+
+        try
+        {
+            using (IDataReader dr = DataServices.ExecuteReader("Rpt_MAgentWinlostDetail_Old", param, DatabaseType.WAREHOUSE))
+            {
+                if (dr == null)
+                {
+                    report.ErrorCode = IbcError.INTERNAL_ERROR;
+                    report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+                }
+                else
+                {
+                    List<MasterWinLossOldRow> reportRow = new List<MasterWinLossOldRow>();
+                    MasterWinLossOldRow totalRow = new MasterWinLossOldRow();
+                    totalRow.MasterId = "Total";
+                    while (dr.Read())
+                    {
+                        MasterWinLossOldRow row = new MasterWinLossOldRow();
+
+                        row.MasterId = dr["username"].ToString();
+                        row.Turnover = FormatHandler.GetDouble(dr["turnover"],2);
+                        row.GrossCommission = FormatHandler.GetDouble(dr["GrossComm"],2);
+                        row.MemberWinLoss = FormatHandler.GetDouble(dr["MemberWin"],2);
+                        row.MemberCommission = FormatHandler.GetDouble(dr["MemberComm"],2);
+                        row.MemberTotal = FormatHandler.GetDouble(dr["MemberTotal"],2);
+                        row.AgentWinLoss = FormatHandler.GetDouble(dr["AgentWin"],2);
+                        row.AgentCommission = FormatHandler.GetDouble(dr["AgentComm"],2);
+                        row.AgentTotal = FormatHandler.GetDouble(dr["AgentTotal"],2);
+                        row.MasterWinLoss = FormatHandler.GetDouble(dr["MasterWin"],2);
+                        row.MasterCommission = FormatHandler.GetDouble(dr["MasterComm"],2);
+                        row.MasterTotal = FormatHandler.GetDouble(dr["MasterTotal"],2);
+                        row.SuperWinLoss = FormatHandler.GetDouble(dr["SAgWin"],2);
+                        row.SuperCommission = FormatHandler.GetDouble(dr["SAgComm"],2);
+                        row.SuperTotal = FormatHandler.GetDouble(dr["SAgTotal"],2);
+                        row.CompanyTotal = FormatHandler.GetDouble(dr["Company"],2);
+
+                        reportRow.Add(row);
+
+                        totalRow.MasterId = "Total";
+                        totalRow.Turnover += row.Turnover;
+                        totalRow.GrossCommission += row.GrossCommission;
+                        totalRow.MemberWinLoss += row.MemberWinLoss;
+                        totalRow.MemberCommission += row.MemberCommission;
+                        totalRow.MemberTotal += row.MemberTotal;
+                        totalRow.AgentWinLoss += row.AgentWinLoss;
+                        totalRow.AgentCommission += row.AgentCommission;
+                        totalRow.AgentTotal += row.AgentTotal;
+                        totalRow.MasterWinLoss += row.MasterWinLoss;
+                        totalRow.MasterCommission += row.MasterCommission;
+                        totalRow.MasterTotal += row.MasterTotal;
+                        totalRow.SuperWinLoss += row.SuperWinLoss;
+                        totalRow.SuperCommission += row.SuperCommission;
+                        totalRow.SuperTotal += row.SuperTotal;
+                        totalRow.CompanyTotal += row.CompanyTotal;
+
+                        totalRow.Turnover =  FormatHandler.GetDouble(totalRow.Turnover,2);
+                        totalRow.GrossCommission = FormatHandler.GetDouble(totalRow.GrossCommission,2);
+                        totalRow.MemberWinLoss = FormatHandler.GetDouble(totalRow.MemberWinLoss,2);
+                        totalRow.MemberCommission =FormatHandler.GetDouble( totalRow.MemberCommission,2);
+                        totalRow.MemberTotal = FormatHandler.GetDouble(totalRow.MemberTotal,2);
+                        totalRow.AgentWinLoss = FormatHandler.GetDouble(totalRow.AgentWinLoss,2);
+                        totalRow.AgentCommission = FormatHandler.GetDouble(totalRow.AgentCommission,2);
+                        totalRow.AgentTotal = FormatHandler.GetDouble(totalRow.AgentTotal,2);
+                        totalRow.MasterWinLoss = FormatHandler.GetDouble(totalRow.MasterWinLoss,2);
+                        totalRow.MasterCommission =FormatHandler.GetDouble( totalRow.MasterCommission,2);
+                        totalRow.MasterTotal =FormatHandler.GetDouble( totalRow.MasterTotal,2);
+                        totalRow.SuperWinLoss =FormatHandler.GetDouble( totalRow.SuperWinLoss,2);
+                        totalRow.SuperCommission = FormatHandler.GetDouble(totalRow.SuperCommission,2);
+                        totalRow.SuperTotal = FormatHandler.GetDouble(totalRow.SuperTotal,2);
+                        totalRow.CompanyTotal = FormatHandler.GetDouble(totalRow.CompanyTotal, 2);
+                    }// end while
+                    reportRow.Add(totalRow);
+                    report.Rows = reportRow.ToArray();
+                    report.ErrorCode = IbcError.SUCCESS;
+                    report.ErrorMsg = IbcError.SUCCESS_MSG;
+                }//  if (dr == null)
+            }//end using
+        }
+        catch
+        {
+            report.ErrorCode = IbcError.INTERNAL_ERROR;
+            report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+        }
+
+        return report;
+    }
+}

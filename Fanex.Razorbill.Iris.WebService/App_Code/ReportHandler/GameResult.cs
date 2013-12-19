@@ -1,0 +1,152 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using IBCUtils;
+using IBCDLL.DAL;
+using IBCDLL.AgentReport;
+using System.Collections;
+using System.Collections.Generic;
+
+
+
+public class LeagueRow
+{
+    public int LeagueId = 0;
+    public string LeagueName = "ALL LEAGUE";    
+}
+public class LeagueForResult : IbcError
+{
+    public LeagueRow[] Rows;
+    public static LeagueForResult GetReport(string eventdate , string language)
+    {
+        LeagueForResult report = new LeagueForResult();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        DateTime fdate;
+        if (!Validator.ValidDateMMDDYYYY(eventdate, out fdate).IsSuccess())
+        {
+            report.ErrorCode = IbcError.DATE_INVALID_FORMAT;
+            report.ErrorMsg = IbcError.DATE_INVALID_FORMAT_MSG;
+            return report;
+        }
+        Hashtable param = new Hashtable();
+        param.Add("eventdate", fdate);
+        if (string.IsNullOrEmpty(language)) language = "E";
+        param.Add("language", language);
+
+        try
+        {
+            using (IDataReader dr = DataServices.ExecuteReader("LeagueSelForResult", param, DatabaseType.ARCHIVE))
+            {
+                if (dr == null)
+                {
+                    report.ErrorCode = IbcError.INTERNAL_ERROR;
+                    report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+                }
+                else
+                {
+                    List<LeagueRow> reportRow = new List<LeagueRow>();
+                    LeagueRow totalRow = new LeagueRow();
+                    while (dr.Read())
+                    {
+                        LeagueRow row = new LeagueRow();
+                        row.LeagueId = FormatHandler.GetInt(dr["leagueid"]);
+                        row.LeagueName = dr["leaguename"].ToString();
+
+                        reportRow.Add(row);
+
+                    }//end while
+                    reportRow.Add(totalRow);
+                    report.Rows = reportRow.ToArray();
+                    report.ErrorCode = IbcError.SUCCESS;
+                    report.ErrorMsg = IbcError.SUCCESS_MSG;
+                }//end if (dr == null)
+            }// end using
+        }
+        catch
+        {
+            report.ErrorCode = IbcError.INTERNAL_ERROR;
+            report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+        }
+        return report;
+    }
+}
+public class ResultRow
+{    
+    public string KickOffTime;
+    public string LeagueName;
+    public string Home;
+    public string Away;
+    public string FirstHalfScore;
+    public string FinalScore;
+    public string Status;
+}
+public class GameResult : IbcError
+{
+    static string lt = "&lt;";
+    static string gt = "&gt;";
+    public ResultRow[] Rows;
+    public static GameResult GetReport(string fromdate, int leagueId, string lang)
+    {
+        GameResult report = new GameResult();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        DateTime fdate ;
+        if (!Validator.ValidDateMMDDYYYY(fromdate, out fdate).IsSuccess())
+        {
+            report.ErrorCode = IbcError.DATE_INVALID_FORMAT;
+            report.ErrorMsg = IbcError.DATE_INVALID_FORMAT_MSG;
+            return report;
+        }
+        if (string.IsNullOrEmpty(lang)) lang = "E";
+        Hashtable param = new Hashtable();        
+        param.Add("fromdate", fdate);
+        param.Add("leagueid", leagueId);
+        param.Add("language", lang);
+
+        try
+        {
+            using (IDataReader dr = DataServices.ExecuteReader("MatchSelResultByLeague", param, DatabaseType.ARCHIVE))
+            {
+                if (dr == null)
+                {
+                    report.ErrorCode = IbcError.INTERNAL_ERROR;
+                    report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+                }
+                else
+                {
+                    List<ResultRow> reportRows = new List<ResultRow>();
+                    while (dr.Read())
+                    {
+                        ResultRow row = new ResultRow();
+                        row.KickOffTime = dr["showtime"].ToString().Replace("<", lt).Replace(">", gt);
+                        row.LeagueName = dr["leaguename"].ToString();
+                        row.Home = dr["home"].ToString();
+                        row.Away = dr["Away"].ToString();
+                        row.FirstHalfScore = dr["hthomescore"].ToString() + " - " + dr["htawayscore"].ToString();
+                        row.FinalScore = dr["finalhomescore"].ToString() + " - " + dr["finalawayscore"].ToString();
+                        row.Status = dr["eventstatus"].ToString();
+
+                        reportRows.Add(row);
+                    }
+
+                    report.Rows = reportRows.ToArray();
+                    report.ErrorCode = IbcError.SUCCESS;
+                    report.ErrorMsg = IbcError.SUCCESS_MSG;
+                }
+            }
+        }
+        catch 
+        {
+            report.ErrorCode = IbcError.INTERNAL_ERROR;
+            report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+        }
+        return report;
+    }
+}

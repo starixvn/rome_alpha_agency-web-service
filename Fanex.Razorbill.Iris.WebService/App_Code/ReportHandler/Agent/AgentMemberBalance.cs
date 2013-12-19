@@ -1,0 +1,86 @@
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Collections;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using IBCUtils;
+using IBCDLL.DAL;
+using IBCDLL.AgentReport;
+
+/// <summary>
+/// Summary description for MemberBalance
+/// </summary>
+public class MemberBalanceRow
+{
+    //public int custid;
+    public double Credit = 0;
+    public double Balance = 0;
+    public double Outstanding = 0;    
+    public string MemberId;
+    public string FirstName;
+    public string LastName;
+}
+public class AgentMemberBalance : IbcError
+{
+    public MemberBalanceRow[] Rows;
+
+    public static AgentMemberBalance GetReport(int custId, bool Closed)
+    {
+        AgentMemberBalance report = new AgentMemberBalance();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        Hashtable param = new Hashtable();
+        param.Add("custid", custId);
+        if (Closed) param.Add("closed", 1);
+        using (IDataReader dr = DataServices.ExecuteReader("CustomerSelMultipleTransfer", param, DatabaseType.ARCHIVE))
+        {
+            if (dr == null)
+            {
+                report.ErrorCode = IbcError.INTERNAL_ERROR;
+                report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+            }
+            else
+            {
+                List<MemberBalanceRow> reportRow = new List<MemberBalanceRow>();
+                MemberBalanceRow totalRow = new MemberBalanceRow();
+                totalRow.MemberId = "Total";
+                while (dr.Read())
+                {
+                    MemberBalanceRow row = new MemberBalanceRow();
+                    //row.custid = Convert.ToInt32(dr["custid"]);
+                    row.MemberId = dr["username"].ToString();
+                    row.Credit = FormatHandler.GetDouble(dr["Credit"],2);
+                    row.Balance = FormatHandler.GetDouble(dr["Balance"],2);
+                    row.Outstanding = FormatHandler.GetDouble(dr["Outstanding"],2);                    
+                    row.FirstName = dr["FirstName"].ToString();
+                    row.LastName = dr["LastName"].ToString();
+
+                    reportRow.Add(row);
+
+                    totalRow.Credit += row.Credit;
+                    totalRow.Balance += row.Balance;
+                    totalRow.Outstanding += row.Outstanding;
+
+                    totalRow.Credit = FormatHandler.GetDouble(totalRow.Credit,2);
+                    totalRow.Balance = FormatHandler.GetDouble(totalRow.Balance,2);
+                    totalRow.Outstanding = FormatHandler.GetDouble(totalRow.Outstanding, 2);
+                    
+                }// end while
+                reportRow.Add(totalRow);
+                report.Rows = reportRow.ToArray();
+                report.ErrorCode = IbcError.SUCCESS;
+                report.ErrorMsg = IbcError.SUCCESS_MSG;
+            }//  if (dr == null)
+        }//end using
+
+
+        return report;
+    }
+}

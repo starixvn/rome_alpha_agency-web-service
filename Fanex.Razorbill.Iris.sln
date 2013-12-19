@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Fanex.Razorbill.Iris.WebService", "Fanex.Razorbill.Iris.WebService\", "{E21CD2EA-55F6-40AC-9C00-5119EA473D6E}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/Fanex.Razorbill.Iris.WebService"
+		Debug.AspNetCompiler.PhysicalPath = "Fanex.Razorbill.Iris.WebService\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Fanex.Razorbill.Iris.WebService\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Fanex.Razorbill.Iris.WebService"
+		Release.AspNetCompiler.PhysicalPath = "Fanex.Razorbill.Iris.WebService\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Fanex.Razorbill.Iris.WebService\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "33181"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{2D5D2FF6-B898-4006-974E-2C4A06EE4687}"
+	ProjectSection(SolutionItems) = preProject
+		Dependencies\IBCDLL.dll = Dependencies\IBCDLL.dll
+		Dependencies\IBCFile.dll = Dependencies\IBCFile.dll
+		Dependencies\IBCUtils.dll = Dependencies\IBCUtils.dll
+		Dependencies\log4net.dll = Dependencies\log4net.dll
+		Dependencies\Microsoft.Practices.EnterpriseLibrary.Caching.dll = Dependencies\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+		Dependencies\Microsoft.Practices.EnterpriseLibrary.Common.dll = Dependencies\Microsoft.Practices.EnterpriseLibrary.Common.dll
+		Dependencies\Microsoft.Practices.EnterpriseLibrary.Logging.dll = Dependencies\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+		Dependencies\Microsoft.Practices.ObjectBuilder.dll = Dependencies\Microsoft.Practices.ObjectBuilder.dll
+		Dependencies\RemotingRef.dll = Dependencies\RemotingRef.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E21CD2EA-55F6-40AC-9C00-5119EA473D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E21CD2EA-55F6-40AC-9C00-5119EA473D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

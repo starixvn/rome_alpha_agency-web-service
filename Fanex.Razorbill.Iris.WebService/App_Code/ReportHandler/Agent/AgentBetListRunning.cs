@@ -1,0 +1,179 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using IBCUtils;
+using IBCDLL.DAL;
+using IBCDLL.AgentReport;
+using System.Collections;
+using System.Collections.Generic;
+
+/// <summary>
+/// CITS
+/// Summary description for AgentBetListRunning
+/// </summary>
+public class AgentBetListRunningRow
+{
+    public string MemberCode;
+    public long BetId;
+    public string TransactionTime;
+    public string BetType;
+    public string Sport;
+    public int GameId;
+    public string Home;
+    public string Away;
+    public string League;
+    public string Choice;
+    public string Handicap;
+    public string OddsType;
+    public double Odds;    
+    public double Stake;
+    public int LiveAScore;
+    public int LiveBScore;
+    public string MatchDate;
+}
+
+public class AgentBetListRunning:IbcError
+{
+    public AgentBetListRunningRow[] Rows;
+    public static AgentBetListRunning GetReports(int custAgentId)
+    {
+        AgentBetListRunning report = new AgentBetListRunning();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        Hashtable hash = new Hashtable();
+        hash.Add("custid", custAgentId);
+
+        try
+        {
+            using (IDataReader dr = DataServices.ExecuteReader("Age_BetList_SelRunningAll_API", hash, DatabaseType.ARCHIVE))
+            {
+                if (dr == null)
+                {
+                    report.ErrorCode = IbcError.INTERNAL_ERROR;
+                    report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+                }
+                else
+                {
+                    List<AgentBetListRunningRow> reportRow = new List<AgentBetListRunningRow>();
+                    while (dr.Read())
+                    {
+                        AgentBetListRunningRow row = new AgentBetListRunningRow();
+                        row.MemberCode = dr["username"].ToString();
+                        row.BetId = (dr["transid"] == null ? 0 : (long)(dr["transid"]));
+                        row.TransactionTime = dr["transdate"].ToString();
+                        row.BetType = dr["typenamee"].ToString();
+                        row.Sport = dr["sportname"].ToString();
+                        row.GameId = FormatHandler.GetInt(dr["matchid"]);
+                        row.Home = dr["home"].ToString();
+                        row.Away = dr["away"].ToString();
+                        row.League = dr["leaguename"].ToString();
+                        row.MatchDate = IBCUtils.FormatHandler.FormatDateTimeEn24(dr["kickofftime"]);
+                        
+                        #region bettype
+                        int bettype = FormatHandler.GetInt(dr["bettype"]);
+                        double hdp1 = FormatHandler.GetDouble(dr["hdp1"], 2);
+                        double hdp2 = FormatHandler.GetDouble(dr["hdp2"], 2);
+                        double hdp = 0;
+                        string betteam = dr["betteam"].ToString();
+                        switch (bettype)
+                        { 
+                            case 1:
+                            case 7:
+                                if (betteam == "h")
+                                {
+                                    row.Choice = dr["Home"].ToString();
+                                    hdp = hdp2 - hdp1;
+                                    row.Handicap = FormatHandler.GetDouble(hdp,2).ToString();
+                                }
+                                else
+                                {
+                                    row.Choice = dr["Away"].ToString();
+                                    hdp = hdp1 - hdp2;
+                                    row.Handicap = FormatHandler.GetDouble(hdp,2).ToString();
+                                }
+                                break;
+                            case 2:
+                                if (betteam == "h")
+                                {
+                                    row.Choice = "Odd";
+                                    row.Handicap = "-";
+                                }
+                                else
+                                {
+                                    row.Choice = "Even";
+                                    row.Handicap = "-";
+                                }
+                                break;
+                            case 3:
+                            case 8:
+                                if (betteam == "h")
+                                {
+                                    row.Choice = "Over";
+                                    hdp = hdp1 - hdp2;
+                                    row.Handicap = FormatHandler.GetDouble(hdp,2).ToString();
+                                }
+                                else
+                                {
+                                    row.Choice = "Under";
+                                    row.Handicap = FormatHandler.GetDouble(hdp1, 2).ToString();
+                                }
+                                break;
+                            case 4:
+                                row.Choice = "Correct Score";
+                                row.Handicap = hdp1.ToString() + "-" + hdp2.ToString();
+                                break;
+                            case 6:
+                            case 16:
+                            case 5:
+                            case 15:
+                                row.Choice = betteam;
+                                row.Handicap = "-";
+                                break;
+                            case 10:
+                                row.Choice = dr["Home"].ToString();
+                                row.Handicap = "-";
+                                break;
+                            case 9 :
+                                row.Choice = "-";
+                                row.Handicap = "-";
+                                break;
+                        }
+                        #endregion
+
+			row.OddsType = CacheRef.GetOddsTypeName(dr["OddsType"]);
+                        row.Odds = FormatHandler.GetDouble(dr["Odds"], 3);
+                        row.Stake = FormatHandler.GetDouble(dr["Stake"], 2);
+			if (FormatHandler.GetBool(dr["liveindicator"]))
+                        {
+                            row.LiveAScore = FormatHandler.GetInt(dr["livehomescore"]);
+                            row.LiveBScore = FormatHandler.GetInt(dr["liveawayscore"]);
+                        }
+                        else
+                        {
+                            row.LiveAScore = -1;
+                            row.LiveBScore = -1;
+                        }
+
+                        reportRow.Add(row);
+                    }
+
+                    report.Rows = reportRow.ToArray();
+                    report.ErrorCode = IbcError.SUCCESS;
+                    report.ErrorMsg = IbcError.SUCCESS_MSG;
+                }
+            }
+        }
+        catch
+        {
+            report.ErrorCode = IbcError.INTERNAL_ERROR;
+            report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+        }
+        return report;
+    }
+}

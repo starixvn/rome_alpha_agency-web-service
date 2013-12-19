@@ -1,0 +1,77 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using IBCUtils;
+using IBCDLL.DAL;
+using IBCDLL.AgentReport;
+using System.Collections;
+using System.Collections.Generic;
+
+/// <summary>
+/// Summary description for AgentMemberOutStanding
+/// </summary>
+/// 
+
+public class MemberOutstandingRow
+{
+    public MemberOutstandingRow()
+    { }
+
+    public string MemberId;
+    public double Outstanding;
+    public double AgentPosition;
+}
+public class AgentMemberOutstanding:IbcError
+{
+    public MemberOutstandingRow[] Rows;
+
+    public static AgentMemberOutstanding GetReport(int custId)
+    {
+        AgentMemberOutstanding report = new AgentMemberOutstanding();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        Hashtable param = new Hashtable();
+        param.Add("custid", custId);
+        using (IDataReader dr = DataServices.ExecuteReader("CustomerSelOutstandingList", param, DatabaseType.ARCHIVE))
+        {
+            if (dr == null)
+            {
+                report.ErrorCode = IbcError.INTERNAL_ERROR;
+                report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+            }
+            else
+            {
+                List<MemberOutstandingRow> reportRow = new List<MemberOutstandingRow>();
+                MemberOutstandingRow totalRow = new MemberOutstandingRow();
+                totalRow.MemberId = "Total:";
+                totalRow.Outstanding = totalRow.AgentPosition = 0;
+                while (dr.Read())
+                {
+                    MemberOutstandingRow row = new MemberOutstandingRow();
+                    row.MemberId = dr["username"].ToString();
+                    row.Outstanding = FormatHandler.GetDouble(dr["outstanding"],2);
+                    row.AgentPosition = FormatHandler.GetDouble(dr["aposition"],2);
+                    reportRow.Add(row);
+
+                    totalRow.Outstanding += row.Outstanding;
+                    totalRow.AgentPosition += row.AgentPosition;
+
+                    totalRow.Outstanding = FormatHandler.GetDouble(totalRow.Outstanding,2);
+                    totalRow.AgentPosition = FormatHandler.GetDouble(totalRow.AgentPosition,2);
+
+                 }// end while(dr.Read)
+                 reportRow.Add(totalRow);
+                 report.Rows = reportRow.ToArray();
+                 report.ErrorCode = IbcError.SUCCESS;
+                 report.ErrorMsg = IbcError.SUCCESS_MSG;
+            }// end if (dr == null)
+        }// end using
+        return report;
+    }
+}

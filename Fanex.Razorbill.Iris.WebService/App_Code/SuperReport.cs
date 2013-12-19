@@ -1,0 +1,872 @@
+using System;
+using System.Web;
+using System.Collections;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using IBCUtils;
+using IBCUtils.Objects;
+
+
+
+/// <summary>
+/// Summary description for Super
+/// </summary>
+[WebService(Namespace = "http://schemas.xmlsoap.org/wsdl/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+public class SuperReport : IbcWebserviceAgent
+{
+    /// <summary>
+    /// CITS IMBUSD/123456/405003
+    /// </summary>
+    /// <param name="fromdate"></param>
+    /// <param name="todate"></param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public SuperMasterWinLoss MasterWinLoss(string fromdate, string todate)
+    {
+        int superId;
+        SuperMasterWinLoss result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new SuperMasterWinLoss();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = SuperMasterWinLoss.GetReport(superId, fromdate, todate);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// CITS IMBUSD/123456/405003
+    /// </summary>
+    /// <param name="fromdate"></param>
+    /// <param name="todate"></param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public SuperMasterWinLossDetail MasterWinLossDetail(string fromdate, string todate)
+    {
+        int superId;
+        SuperMasterWinLossDetail result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new SuperMasterWinLossDetail();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = SuperMasterWinLossDetail.GetReport(superId, fromdate, todate);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// CITS/SA-UUS/20
+    /// </summary>
+    /// <param name="fromdate"></param>
+    /// <param name="todate"></param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public SuperMasterWinLossOld MasterWinLossOld(string fromdate, string todate)
+    {
+        int superId;
+        SuperMasterWinLossOld result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new SuperMasterWinLossOld();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = SuperMasterWinLossOld.GetReport(superId, fromdate, todate);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// CITS/SA-UUS/20
+    /// </summary>
+    /// <param name="fromdate"></param>
+    /// <param name="todate"></param>
+    /// <param name="lang"></param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public SuperMatchWinLossDetail MatchWinLossDetail(string fromdate, string todate, string language)
+    {
+        int superId;
+        SuperMatchWinLossDetail result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new SuperMatchWinLossDetail();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = SuperMatchWinLossDetail.GetReport(superId, fromdate, todate, language);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// CITS/SA-UUS/20
+    /// </summary>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public SuperMasterBalance MasterBalanceActive()
+    {
+        int superId;
+        SuperMasterBalance result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new SuperMasterBalance();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = SuperMasterBalance.GetReport(superId, false);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// CITS/SA-UUS/20
+    /// </summary>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public SuperMasterBalance MasterBalanceClosed()
+    {
+        int superId;
+        SuperMasterBalance result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new SuperMasterBalance();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = SuperMasterBalance.GetReport(superId, true);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// username = master => List cancelled bets of one master
+    /// </summary>
+    /// <param name="username"></param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public CancelledBets CancelledBet(string username, int userType)
+    {
+        int superId;
+        CancelledBets result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new CancelledBets();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+            }
+            else
+            {
+                //if (username.ToLower().Equals("all"))
+                //{
+                //    result = CancelledBets.GetCancelledList(AuthHeaderValue.Id, UserInfo.ROLE_SUPER);
+                //}
+                //else 
+                if (userType == UserInfo.ROLE_MEMBER)
+                {
+                    if (IsValidMember(superId, username, UserInfo.ROLE_MEMBER))
+                    {
+                        result = CancelledBets.GetCancelledList(username, UserInfo.ROLE_MEMBER);
+                    }
+                    else
+                    {
+                        result = new CancelledBets();
+                        result.ErrorCode = IbcError.USERID_INVALID;
+                        result.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+                    }
+                }
+                else if (userType == UserInfo.ROLE_AGENT)
+                {
+                    if (IsValidMember(superId, username, UserInfo.ROLE_AGENT))
+                    {
+                        result = CancelledBets.GetCancelledList(username, UserInfo.ROLE_AGENT);
+                    }
+                    else
+                    {
+                        result = new CancelledBets();
+                        result.ErrorCode = IbcError.USERID_INVALID;
+                        result.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+                    }
+                }
+                else if (userType == UserInfo.ROLE_MASTER)
+                {
+                    if (IsValidMember(superId, username, UserInfo.ROLE_MASTER))
+                    {
+                        result = CancelledBets.GetCancelledList(username, UserInfo.ROLE_MASTER);
+                    }
+                    else
+                    {
+                        result = new CancelledBets();
+                        result.ErrorCode = IbcError.USERID_INVALID;
+                        result.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+                    }
+                }
+                else
+                {
+                    result = new CancelledBets();
+                    result.ErrorCode = IbcError.AGENT_ROLE_INVALID;
+                    result.ErrorMsg = IbcError.AGENT_ROLE_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="username">agent username</param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public MemberCancelledList GetMemberCancelledList(string agentUsername)
+    {
+        int superId;
+        MemberCancelledList result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new MemberCancelledList();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, agentUsername, UserInfo.ROLE_AGENT))
+                {
+                    result = MemberCancelledList.GetMemberList(agentUsername, UserInfo.ROLE_MEMBER);
+                }
+                else
+                {
+                    result = new MemberCancelledList();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+   /// <summary>
+   /// 
+   /// </summary>
+   /// <param name="masterUsername"></param>
+   /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public MemberCancelledList GetAgentCancelledList(string masterUsername)
+    {
+        int superId;
+        MemberCancelledList result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new MemberCancelledList();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, masterUsername, UserInfo.ROLE_MASTER))
+                {
+                    result = MemberCancelledList.GetMemberList(masterUsername, UserInfo.ROLE_AGENT);
+                }
+                else
+                {
+                    result = new MemberCancelledList();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public MemberCancelledList GetMasterCancelledList()
+    {
+        int masterId;
+        MemberCancelledList result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_MASTER, out masterId))
+            {
+                result = new MemberCancelledList();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = MemberCancelledList.GetMemberList(AuthHeaderValue.Id, UserInfo.ROLE_MASTER);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+    /// <summary>
+    /// CITS - SA-UUS/20
+    /// </summary>
+    /// <param name="MasterUserName"></param>
+    /// <param name="Amount"></param>
+    /// <param name="lang"></param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public SuperTransfer Transfer(string MasterUserName, double amount, string language)
+    {
+        int superId;
+        SuperTransfer result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new SuperTransfer();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, MasterUserName, UserInfo.ROLE_MASTER))
+                {
+                    result = SuperTransfer.Transfer(superId, MasterUserName, amount, language);
+                }
+                else
+                {
+                    result = new SuperTransfer();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public SuperStatement Statement()
+    {
+        int superId;
+        SuperStatement result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new SuperStatement();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = SuperStatement.GetReport(superId);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+    /// <summary>
+    /// CITS imbu02/405006
+    /// </summary>
+    /// <param name="fromdate"></param>
+    /// <param name="language"></param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public LeagueForResult League(string fromdate, string language)
+    {
+        int superId;
+        LeagueForResult result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new LeagueForResult();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = LeagueForResult.GetReport(fromdate, language);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// CITS imbu02/405006
+    /// </summary>
+    /// <param name="fromdate"></param>
+    /// <param name="leagueId"></param>
+    /// <param name="language"></param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public GameResult Result(string eventdate, int leagueId, string language)
+    {
+        int superId;
+        GameResult result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new GameResult();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = GameResult.GetReport(eventdate, leagueId, language);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public MemberBetLists4 GetMasterWinLossMemberBetList(string fromdate, string todate, string username,string language)
+    {
+        int superId;
+        MemberBetLists4 result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new MemberBetLists4();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, username, UserInfo.ROLE_MEMBER))
+                {
+                    result = MemberBetLists4.GetReport(username, fromdate, todate, language, 1, "", 0);
+                }
+                else
+                {
+                    result = new MemberBetLists4();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+    
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public MemberBetLists4 GetMasterWinLossMemberBetListOld(string fromdate, string todate, string username, string language)
+    {
+        int superId;
+        MemberBetLists4 result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new MemberBetLists4();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, username, UserInfo.ROLE_MEMBER))
+                {
+                    result = MemberBetLists4.GetReport(username, fromdate, todate, language, 2, "", 0);
+                }
+                else
+                {
+                    result = new MemberBetLists4();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+  
+    /// <summary>
+    /// khoa remove fromdate, todate at 12-21-2007
+    /// </summary>
+    /// <param name="fromdate"></param>
+    /// <param name="todate"></param>
+    /// <param name="matchId"></param>
+    /// <param name="bettype"></param>
+    /// <param name="language"></param>
+    /// <returns></returns>
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public MemberBetLists4 GetMemberBetListByMatch(string matchId, int bettype, string language)
+    {
+        string fromdate =  DateTime.Today.ToShortDateString(), todate = DateTime.Today.ToShortDateString();
+        int superId;
+        MemberBetLists4 result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new MemberBetLists4();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.SUCCESS_MSG;
+            }
+            else
+            {
+                result = MemberBetLists4.GetReport(AuthHeaderValue.Id, fromdate, todate, language, 5, matchId, bettype);
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public AgentMemberWinLoss MemberWinLoss(string fromdate, string todate, string username)
+    {
+        int superId;
+        AgentMemberWinLoss result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new AgentMemberWinLoss();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, username, UserInfo.ROLE_AGENT))
+                {
+                    result = AgentMemberWinLoss.GetReport(username, fromdate, todate);
+                }
+                else
+                {
+                    result = new AgentMemberWinLoss();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public MasterAgentWinLoss AgentWinLoss(string fromdate, string todate, string username)
+    {
+        int superId;
+        MasterAgentWinLoss result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new MasterAgentWinLoss();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, username, UserInfo.ROLE_MASTER))
+                {
+                    result = MasterAgentWinLoss.GetReport(username, fromdate, todate);
+                }
+                else
+                {
+                    result = new MasterAgentWinLoss();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public MasterAgentWinLossOld AgentWinLossOld(string fromdate, string todate, string username)
+    {
+        int superId;
+        MasterAgentWinLossOld result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new MasterAgentWinLossOld();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, username, UserInfo.ROLE_MASTER))
+                {
+                    result = MasterAgentWinLossOld.GetReport(username, fromdate, todate);
+                }
+                else
+                {
+                    result = new MasterAgentWinLossOld();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public AgentMemberWinLossOld MemberWinLossOld(string fromdate, string todate, string username)
+    {
+        int superId;
+        AgentMemberWinLossOld result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new AgentMemberWinLossOld();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, username, UserInfo.ROLE_AGENT))
+                {
+                    result = AgentMemberWinLossOld.GetReport(username, fromdate, todate);
+                }
+                else
+                {
+                    result = new AgentMemberWinLossOld();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public BetSlip GetBetSlip(string refno, string language)
+    {
+        int superId;
+        BetSlip result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new BetSlip();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                result = BetSlip.GetReport(refno, language);
+                if (!IsValidMember(superId, result.Username, UserInfo.ROLE_MEMBER))
+                {
+                    result = new BetSlip();
+                    result.ErrorCode = IbcError.TRANS_ID_INVALID;
+                    result.ErrorMsg = IbcError.TRANS_ID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public AgentMemberWinLossDetail MemberWinLossDetail(string fromdate, string todate, string username)
+    {
+        int superId;
+        AgentMemberWinLossDetail result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_SUPER, out superId))
+            {
+                result = new AgentMemberWinLossDetail();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, username, UserInfo.ROLE_AGENT))
+                {
+                    result = AgentMemberWinLossDetail.GetReport(username, fromdate, todate);
+                }
+                else
+                {
+                    result = new AgentMemberWinLossDetail();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+
+    [WebMethod]
+    [SoapHeader("AuthHeaderValue")]
+    public MasterAgentWinLossDetail AgentWinLossDetail(string fromdate, string todate, string username)
+    {
+        int superId;
+        MasterAgentWinLossDetail result = null;
+        try
+        {
+            if (!IsValidAgent(UserInfo.ROLE_MASTER, out superId))
+            {
+                result = new MasterAgentWinLossDetail();
+                result.ErrorCode = IbcError.USERID_INVALID;
+                result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+            }
+            else
+            {
+                if (IsValidMember(superId, username, UserInfo.ROLE_MASTER))
+                {
+                    result = MasterAgentWinLossDetail.GetReport(username, fromdate, todate);
+                }
+                else
+                {
+                    result = new MasterAgentWinLossDetail();
+                    result.ErrorCode = IbcError.USERID_INVALID;
+                    result.ErrorMsg = IbcError.USERID_INVALID_MSG;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            LogService.WriteLog(e);
+        }
+        return result;
+    }
+}
+

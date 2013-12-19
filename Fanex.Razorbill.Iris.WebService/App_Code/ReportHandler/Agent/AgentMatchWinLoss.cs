@@ -1,0 +1,105 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using IBCUtils;
+using IBCDLL.DAL;
+using IBCDLL.AgentReport;
+using System.Collections;
+using System.Collections.Generic;
+
+
+/// <summary>
+/// Summary description for AgentMatchWinLoss
+/// </summary>
+public class AgentMatchWinLossRow
+{
+    public AgentMatchWinLossRow()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
+    public string Match;
+    public string BetType;
+    public double Commission;
+    public double PositionTaking;
+    public double Total;
+}
+
+public class AgentMatchWinLoss:IbcError
+{
+    public AgentMatchWinLossRow[] Rows;
+
+    public static AgentMatchWinLoss GetReport(int custId, string fromdate, string todate, string language)
+    {
+        AgentMatchWinLoss report = new AgentMatchWinLoss();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        DateTime fdate, tdate;
+        if (!Validator.ValidDateMMDDYYYY(fromdate, out fdate).IsSuccess() || !Validator.ValidDateMMDDYYYY(todate, out tdate).IsSuccess())
+        {
+            report.ErrorCode = IbcError.DATE_INVALID_FORMAT;
+            report.ErrorMsg = IbcError.DATE_INVALID_FORMAT_MSG;
+            return report;
+        }
+        Hashtable param = new Hashtable();
+        param.Add("custid", custId);
+        param.Add("fromdate", fdate);
+        param.Add("todate", tdate);
+        if (string.IsNullOrEmpty(language))
+        {
+            param.Add("language", "E");
+        }
+        else
+        {
+            param.Add("language", language);
+        }
+        using (IDataReader dr = DataServices.ExecuteReader("EnglishAgentSelMatchWinLoss", param, DatabaseType.ARCHIVE))
+        {
+            if (dr == null)
+            {
+                report.ErrorCode = IbcError.INTERNAL_ERROR;
+                report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+            }
+            else
+            {
+                List<AgentMatchWinLossRow> reportRow = new List<AgentMatchWinLossRow>();
+                AgentMatchWinLossRow totalRow = new AgentMatchWinLossRow();
+                totalRow.Match = "Total";
+                totalRow.Commission = totalRow.PositionTaking = totalRow.Total = 0;
+                while (dr.Read())
+                {
+                    AgentMatchWinLossRow row = new AgentMatchWinLossRow();
+                    row.Match = dr["home"].ToString() + "-vs-" + dr["away"].ToString();
+                    row.BetType = dr["typenamee"].ToString();
+                    row.Commission = FormatHandler.GetDouble(dr["commission"],2);
+                    row.PositionTaking = FormatHandler.GetDouble(dr["positiontaking"],2);
+                    row.Total = row.Commission + row.PositionTaking;
+                    row.Total = FormatHandler.GetDouble(row.Total,2);
+                    reportRow.Add(row);
+
+                    totalRow.Match = "Total";
+                    totalRow.Commission += row.Commission;
+                    totalRow.PositionTaking += row.PositionTaking;
+                    totalRow.Total += row.Total;
+
+                    totalRow.Commission = FormatHandler.GetDouble(totalRow.Commission,2);
+                    totalRow.PositionTaking = FormatHandler.GetDouble(totalRow.PositionTaking,2);
+                    totalRow.Total = FormatHandler.GetDouble(totalRow.Total,2);
+
+                }//end while
+                reportRow.Add(totalRow);
+                report.Rows = reportRow.ToArray();
+                report.ErrorCode = IbcError.SUCCESS;
+                report.ErrorMsg = IbcError.SUCCESS_MSG;
+            }//end if (dr == null)
+        }// end using
+        return report;
+    }
+}

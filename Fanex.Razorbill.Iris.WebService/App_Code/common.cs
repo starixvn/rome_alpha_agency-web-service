@@ -1,0 +1,78 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Caching;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Collections;
+using System.Collections.Generic;
+using IBCUtils;
+using IBCDLL.DAL;
+
+public class common
+{
+    public static double getvalue(object value)
+    {
+        if (String.IsNullOrEmpty(value.ToString()))
+            return 0;
+        return Convert.ToDouble(value);
+    }
+    public static DateTime BalanceUpDate
+    {
+        get
+        {
+            DateTime date;
+            if (HttpContext.Current.Cache.Get("BalanceUpDate") != null)
+            {
+                date = (DateTime)HttpContext.Current.Cache["BalanceUpDate"];
+            }
+            else
+            {
+                GetBalNMoveBetDate();
+                date=(DateTime)HttpContext.Current.Cache["BalanceUpDate"];
+            }
+            return date;
+        }
+    }
+    public static DateTime MoveBetDate
+    {
+        get
+        {
+            DateTime date;
+            if (HttpContext.Current.Cache.Get("MoveBetDate")!= null)
+            {
+                date = (DateTime)HttpContext.Current.Cache["MoveBetDate"];
+            }
+            else
+            {
+                GetBalNMoveBetDate();
+                date = (DateTime)HttpContext.Current.Cache["MoveBetDate"];
+            }
+            return date;
+        }
+    }
+    static void GetBalNMoveBetDate()
+    {
+        using (IDataReader dr = DataServices.ExecuteReader("Age_SelBalanceUpDay", DatabaseType.ARCHIVE))
+        {
+            if (dr != null)
+            {
+                if (dr.Read())
+                {
+                    HttpContext.Current.Cache.Insert("BalanceUpDate", dr["BalanceUpDay"], null, DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
+                    HttpContext.Current.Cache.Insert("MoveBetDate", dr["MoveBetsDay"], null, DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
+                }
+                else
+                {
+                    HttpContext.Current.Cache.Remove("BalanceUpDate");
+                    HttpContext.Current.Cache.Remove("MoveBetDate");
+                }
+            }
+        }
+
+    }
+}

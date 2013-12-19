@@ -1,0 +1,226 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using IBCUtils;
+using IBCDLL.DAL;
+using IBCDLL.AgentReport;
+using System.Collections;
+using System.Collections.Generic;
+
+
+/// <summary>
+/// Summary description for CancelledBets
+/// </summary>
+/// 
+
+
+public class CancelledBetsRow
+{
+    public CancelledBetsRow()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
+    public string MemberId;
+    public string BetId;
+    public string TransactionTime;
+    public string RefNo;
+    public BetEvent Event = new BetEvent();
+    public string Choice;
+    public string Handicap;
+    public double Odds;
+    public double Stake;
+    public string Status;
+}
+
+public class MemberCancelledRow
+{
+    public MemberCancelledRow()
+    { }
+    public string UserName;
+    public int BetCount;
+}
+
+public class MemberCancelledList : IbcError
+{
+    public MemberCancelledRow[] MemberList;
+    public static MemberCancelledList GetMemberList(string agentId,int agentType)
+    {
+        MemberCancelledList report = new MemberCancelledList();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        Hashtable param = new Hashtable();
+        param.Add("username", agentId);
+        param.Add("custid", null);
+        string spName = string.Empty;
+        if (agentType == IBCUtils.Objects.UserInfo.ROLE_MEMBER)
+            spName = "BetsSelBetListDeleted_Ag";
+        else if (agentType == IBCUtils.Objects.UserInfo.ROLE_AGENT)
+            spName = "BetsSelBetListDeleted_MAg";
+        else if (agentType == IBCUtils.Objects.UserInfo.ROLE_MASTER)
+            spName = "BetsSelBetListDeleted_SAg";
+        else
+        {
+            report.ErrorCode = IbcError.AGENT_ROLE_INVALID;
+            report.ErrorMsg = IbcError.AGENT_ROLE_INVALID_MSG;
+            return report;
+        }
+
+        try
+        {
+            using (IDataReader dr = DataServices.ExecuteReader(spName, param, DatabaseType.ARCHIVE))
+            {
+                if (dr == null)
+                {
+                    report.ErrorCode = IbcError.INTERNAL_ERROR;
+                    report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+                }
+                else
+                {
+                    List<MemberCancelledRow> reportRow = new List<MemberCancelledRow>();
+                    while (dr.Read())
+                    {
+                        MemberCancelledRow row = new MemberCancelledRow();
+                        row.UserName = dr["username"].ToString();
+                        row.BetCount = FormatHandler.GetInt(dr["betcount"]);
+                        reportRow.Add(row);
+                    }// end while (dr.Read())
+                    report.MemberList = reportRow.ToArray();
+                    report.ErrorCode = IbcError.SUCCESS;
+                    report.ErrorMsg = IbcError.SUCCESS_MSG;
+                }// end if(dr == null)
+            }//end using
+        }
+        catch
+        {
+            report.ErrorCode = IbcError.INTERNAL_ERROR;
+            report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+        }
+        return report;
+    }
+
+}
+public class CancelledBets : IbcError
+{
+    public CancelledBetsRow[] Rows;
+
+    /// <summary>
+    /// Get cancelled bets report.
+    /// roleId = 1 => cancelled bets member
+    /// roleId = 2 => cancelled bets agent
+    /// roleId = 3 => cancelled bets master
+    /// roleId = 4 => cancelled bets super
+    /// </summary>
+    /// <param name="custId"></param>
+    /// <param name="roleId"></param>
+    /// <returns></returns>
+    public static CancelledBets GetCancelledList(string username, int roleId)
+    {
+        CancelledBets report = new CancelledBets();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        Hashtable param = new Hashtable();
+
+        param.Add("username", username);
+        if (roleId != 0)
+        {
+            param.Add("roleid", roleId);
+        }
+        using (IDataReader dr = DataServices.ExecuteReader("BetsSelBetListDeleted", param, DatabaseType.ARCHIVE))
+        {
+            if (dr == null)
+            {
+                report.ErrorCode = IbcError.INTERNAL_ERROR;
+                report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+            }
+            else
+            {
+                List<CancelledBetsRow> reportRow = new List<CancelledBetsRow>();
+                while (dr.Read())
+                {
+                    CancelledBetsRow row = new CancelledBetsRow();
+                    row.MemberId = dr["username"].ToString();
+                    row.BetId = dr["transid"].ToString();
+                    row.TransactionTime = dr["transdate"].ToString();
+                    row.RefNo = dr["refno"].ToString();
+                    row.Event.Home = dr["home"].ToString();
+                    row.Event.Away = dr["away"].ToString();
+                    row.Event.Bettype = dr["typenamee"].ToString();
+                    string bettype = dr["bettype"].ToString();
+                    string betteam = dr["betteam"].ToString();
+                    if (bettype == "1" || bettype == "7")
+                    {
+                        if (betteam == "h")
+                        {
+                            row.Choice = dr["home"].ToString();
+                            row.Handicap = Convert.ToString(FormatHandler.GetDouble(dr["hdp2"]) - FormatHandler.GetDouble(dr["hdp1"]));
+                        }
+                        else if (betteam == "a")
+                        {
+                            row.Choice = dr["away"].ToString();
+                            row.Handicap = Convert.ToString(FormatHandler.GetDouble(dr["hdp1"]) - FormatHandler.GetDouble(dr["hdp2"]));
+                        }
+                        if (Convert.ToBoolean(dr["liveindicator"]))
+                        {
+                            row.Handicap += "@" + dr["livehomescore"] + "-" + dr["liveawayscore"].ToString();
+                        }
+                    }
+                    else if (bettype == "2")
+                    {
+                        if (betteam == "h")
+                        {
+                            row.Choice = "Odd";
+                            row.Handicap = "--";
+                        }
+                        else if (betteam == "a")
+                        {
+                            row.Choice = "Even";
+                            row.Handicap = Convert.ToString(FormatHandler.GetDouble(dr["hdp2"]) - FormatHandler.GetDouble(dr["hdp1"]));
+                        }
+                    }
+                    else if (bettype == "3" || bettype == "8")
+                    {
+                        if (betteam == "h")
+                        {
+                            row.Choice = "Over";
+                            row.Handicap = dr["hdp1"].ToString();
+                        }
+                        else if (betteam == "a")
+                        {
+                            row.Choice = "Under";
+                            row.Handicap = dr["hdp1"].ToString();
+                        }
+                        if (Convert.ToBoolean(dr["liveindicator"]))
+                        {
+                            row.Handicap += "@" + dr["livehomescore"] + "-" + dr["liveawayscore"].ToString();
+                        }
+                    }
+                    else if (bettype == "4")
+                    {
+                        row.Choice = "Correct Score";
+                        row.Handicap = dr["hdp1"].ToString() + ":" + dr["hdp2"].ToString();
+                    }
+                    else if (bettype == "5" || bettype == "6" || bettype == "16")
+                    {
+                        row.Choice = betteam;
+                    }
+                    row.Odds = FormatHandler.GetDouble(dr["odds"]);
+                    row.Stake = FormatHandler.GetDouble(dr["stake"]);
+                    row.Status = dr["status"].ToString();
+                    reportRow.Add(row);
+                }// end while
+                report.Rows = reportRow.ToArray();
+                report.ErrorCode = IbcError.SUCCESS;
+                report.ErrorMsg = IbcError.SUCCESS_MSG;
+            }// end if (dr == null)
+        }// end using
+        return report;
+    }
+}

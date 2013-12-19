@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <!-- Main database -->
+  <!--downline_viewonly type for all-->
+  <item type="downline">
+    <database>main</database>
+    <ip>10.40.40.40</ip>
+    <dbname>bodb02</dbname>
+  </item>
+  <!-- Odds database -->
+  <item type="downline_viewonly">
+    <database>odds</database>
+    <ip>10.20.20.208</ip>
+    <dbname>bodb02_Odds</dbname>
+  </item>
+  <!-- Archive database -->
+  <item type="downline_viewonly">
+    <database>archive</database>
+    <ip>10.40.40.93</ip>
+    <dbname>bodb02</dbname>
+  </item>
+  <!-- Warehouse database -->
+  <item type="downline_viewonly">
+    <database>warehouse</database>
+    <ip>10.40.40.100</ip>
+    <dbname>bodb02</dbname>
+  </item>
+  <!-- Log database -->
+  <item type="downline_viewonly">
+    <database>log</database>
+    <ip>log_ip</ip>
+    <dbname>log_dbname</dbname>
+  </item>
+  <!-- On-user database -->
+  <item type="downline_viewonly">
+    <database>on_user</database>
+    <ip>10.40.40.50</ip>
+    <dbname>on_user</dbname>
+  </item>
+  <!-- 777goal premember database -->
+  <item type="downline_viewonly">
+    <database>pre777</database>
+    <ip>pre777_ip</ip>
+    <dbname>pre777_dbname</dbname>
+  </item>
+  <!-- Test database -->
+  <item type="downline_viewonly">
+    <database>test</database>
+    <ip>test_ip</ip>
+    <dbname>test_dbname</dbname>
+  </item>
+</config>

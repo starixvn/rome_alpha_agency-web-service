@@ -1,0 +1,82 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using IBCUtils;
+using IBCDLL.DAL;
+using IBCDLL.AgentReport;
+using System.Collections;
+using System.Collections.Generic;
+
+/// <summary>
+/// Summary description for AgentMemberStatement
+/// </summary>
+public class AgentMemberStatementRow
+{
+    public AgentMemberStatementRow()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
+    public string Date;
+    public string Refno;
+    public string Remark;
+    public string Type;
+    public double Debit;
+    public double Credit;
+}
+public class AgentMemberStatement:IbcError
+{
+    public AgentMemberStatementRow[] Rows;
+
+    public static AgentMemberStatement GetReport(string username, string fromdate, string todate)
+    {
+        AgentMemberStatement report = new AgentMemberStatement();
+        report.ErrorCode = IbcError.SUCCESS;
+        report.ErrorMsg = IbcError.SUCCESS_MSG;
+        DateTime fdate, tdate;
+        if (!Validator.ValidDateMMDDYYYY(fromdate, out fdate).IsSuccess() || !Validator.ValidDateMMDDYYYY(todate, out tdate).IsSuccess())
+        {
+            report.ErrorCode = IbcError.DATE_INVALID_FORMAT;
+            report.ErrorMsg = IbcError.DATE_INVALID_FORMAT_MSG;
+            return report;
+        }
+        Hashtable param = new Hashtable();
+        param.Add("username", username);
+        param.Add("todate", tdate);
+        param.Add("fromdate", fdate);
+        using (IDataReader dr = DataServices.ExecuteReader("CustaccountSelTransactionByDate", param, DatabaseType.ARCHIVE))
+        {
+            if (dr == null)
+            {
+                report.ErrorCode = IbcError.INTERNAL_ERROR;
+                report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
+            }
+            else
+            {
+                List<AgentMemberStatementRow> reportRow = new List<AgentMemberStatementRow>();
+                while (dr.Read())
+                {
+                    AgentMemberStatementRow row = new AgentMemberStatementRow();
+                    row.Date = dr["transdate"].ToString();
+                    row.Refno = dr["refno"].ToString();
+                    row.Remark = dr["transdesc"].ToString();
+                    row.Type = dr["transtype"].ToString();
+                    row.Debit = FormatHandler.GetDouble(dr["debitamt"]);
+                    row.Credit = FormatHandler.GetDouble(dr["creditamt"]);
+                    reportRow.Add(row);
+                }// end while
+                report.Rows = reportRow.ToArray();
+                report.ErrorCode = IbcError.SUCCESS;
+                report.ErrorMsg = IbcError.SUCCESS_MSG;
+            }// end if(dr == null)
+        }// end using
+        return report;
+    }
+}
