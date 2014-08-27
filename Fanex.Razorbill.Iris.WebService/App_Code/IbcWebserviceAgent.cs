@@ -17,7 +17,7 @@ public class IbcWebserviceAgent:System.Web.Services.WebService
     {
         if (System.Configuration.ConfigurationManager.AppSettings["testing"] == "1")
         {
-            custId = 68289;
+            custId = 1176086;
             AuthHeaderValue = new AuthHeader();
             AuthHeaderValue.Id = IBCDLL.UserController.GetUsernameById(custId.ToString());
             return true;

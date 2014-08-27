@@ -4,7 +4,7 @@
   <!--downline_viewonly type for all-->
   <item type="downline">
     <database>main</database>
-    <ip>10.40.40.40</ip>
+    <ip>10.18.200.230</ip>
     <dbname>bodb02</dbname>
   </item>
   <!-- Odds database -->
@@ -16,13 +16,13 @@
   <!-- Archive database -->
   <item type="downline_viewonly">
     <database>archive</database>
-    <ip>10.40.40.93</ip>
+    <ip>10.18.200.231</ip>
     <dbname>bodb02</dbname>
   </item>
   <!-- Warehouse database -->
   <item type="downline_viewonly">
     <database>warehouse</database>
-    <ip>10.40.40.100</ip>
+    <ip>10.18.200.232</ip>
     <dbname>bodb02</dbname>
   </item>
   <!-- Log database -->

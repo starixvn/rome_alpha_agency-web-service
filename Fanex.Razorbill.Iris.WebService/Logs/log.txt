@@ -1,0 +1,51 @@
+2014-07-11 13:20:02,523 [14044] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-07-11 13:20:18,416 [6680] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-07-11 13:20:41,192 [14044] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-07-11 13:21:19,607 [6680] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-07-11 13:21:55,632 [6680] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-07-11 13:22:34,489 [15960] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 12:51:34,856 [7512] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 12:53:33,427 [4348] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 12:53:44,549 [9888] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 13:00:11,066 [7428] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 13:02:04,023 [7428] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 13:03:43,696 [4632] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 13:04:02,450 [7428] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 13:04:09,339 [4632] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 13:05:28,013 [4632] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListWinLoss(String date) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 66
+2014-08-27 13:06:47,453 [8932] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-08-27 13:09:25,414 [6604] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36

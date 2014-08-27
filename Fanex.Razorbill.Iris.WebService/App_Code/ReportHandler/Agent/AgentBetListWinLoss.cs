@@ -84,7 +84,7 @@ public class AgentBetListWinLoss:IbcError
                         row.Sport = CacheRef.GetSportName(dr["Sporttype"]);
                         row.GameId = FormatHandler.GetInt(dr["matchid"]);
 
-                        row.Home = CacheRef.GetTeamName(dr["HomeID"]);
+                        row.Home = string.Format("{0}_{1}", dr["HomeID"], CacheRef.GetTeamName(dr["HomeID"]));
                         row.Away = CacheRef.GetTeamName(dr["AwayID"]);
 
                         row.League = CacheRef.GetLeagueName(dr["LeagueID"]);
