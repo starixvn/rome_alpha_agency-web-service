@@ -49,3 +49,64 @@
 2014-08-27 13:09:25,414 [6604] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
    at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 25
    at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\API\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 36
+2014-10-09 14:52:14,202 [12652] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AuthenticateDataAccess.cs:line 32
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-09 14:56:30,537 [4240] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AuthenticateDataAccess.cs:line 32
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-09 14:56:44,481 [14852] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AuthenticateDataAccess.cs:line 32
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-09 14:59:26,127 [14288] ERROR LogService [(null)] - Fanex.Data.ObjectDbException: Wrong username or password. ---> System.Data.SqlClient.SqlException: Wrong username or password.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   --- End of inner exception stack trace ---
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AuthenticateDataAccess.cs:line 49
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-09 15:00:08,791 [14288] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AuthenticateDataAccess.cs:line 33
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-09 15:54:25,384 [12416] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IBCDLL.DAL.DataServices.ExecuteReader(String spName, Hashtable parameters, Int32 databaseType, Int32 connectionTimeout)
+   at IBCDLL.DAL.DataServices.ExecuteReader(String spName, Int32 databaseType)
+   at common.GetBalNMoveBetDate() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\common.cs:line 61
+   at common.get_MoveBetDate() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\common.cs:line 53
+   at AgentBetListWinLoss.GetReports(String date, Int32 agentId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\ReportHandler\Agent\AgentBetListWinLoss.cs:line 65
+   at AgentReport.GetAgentBetListWinLoss(String date) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 75
+2014-10-09 16:07:58,677 [9740] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 33
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListWinLoss(String date) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 67

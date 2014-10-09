@@ -13,6 +13,7 @@ using System.Collections;
 using System.Collections.Generic;
 using IBCUtils;
 using IBCDLL.DAL;
+using Fanex.Data;
 
 public class common
 {
@@ -58,8 +59,9 @@ public class common
     }
     static void GetBalNMoveBetDate()
     {
-        using (IDataReader dr = DataServices.ExecuteReader("Age_SelBalanceUpDay", DatabaseType.ARCHIVE))
+        using (ObjectDb objDb = new ObjectDb("Age_SelBalanceUpDay"))
         {
+            var dr = objDb.ExecuteReader();
             if (dr != null)
             {
                 if (dr.Read())

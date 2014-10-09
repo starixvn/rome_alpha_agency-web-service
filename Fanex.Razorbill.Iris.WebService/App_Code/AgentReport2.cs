@@ -27,12 +27,12 @@ public class AgentReport2 : IbcWebserviceAgent
     /// <param name="AgentUserName"></param>
     /// <returns></returns>
     [WebMethod]
-    public AgentBetListRunning GetAgentBetListRunning(int agentId)
+    public BetListRunning GetAgentBetListRunning(int agentId)
     {
-        AgentBetListRunning result = null;
+        BetListRunning result = null;
         try
         {
-            result = AgentBetListRunning.GetReports(agentId);
+            result = BetListRunning.GetReports(agentId);
         }
         catch (Exception e)
         {

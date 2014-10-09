@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Fanex.Razorbill.Iris.Webservice;
 
 
 public class AuthHeader : System.Web.Services.Protocols.SoapHeader 
@@ -14,16 +15,21 @@ public class IbcWebserviceAgent:System.Web.Services.WebService
 {
     public AuthHeader AuthHeaderValue;
     
-    public bool  IsValidAgent(int agentType,out int custId)
+    public bool  IsValidAgent(int agentType, out int custId)
     {
         if (System.Configuration.ConfigurationManager.AppSettings["testing"] == "1")
         {
             custId = 1176086;
             AuthHeaderValue = new AuthHeader();
             AuthHeaderValue.Id = IBCDLL.UserController.GetUsernameById(custId.ToString());
+
             return true;
         }
-        return (ValidateAgent(AuthHeaderValue.Id, AuthHeaderValue.Password,out custId) == agentType);
+
+        var validateResult = ValidateAgent(AuthHeaderValue.Id, AuthHeaderValue.Password);
+        custId = validateResult.Customer.CustId;
+
+        return (validateResult.Customer.RoleId == agentType);
     }
     /// <summary>
     /// 
@@ -31,14 +37,27 @@ public class IbcWebserviceAgent:System.Web.Services.WebService
     /// <param name="username"></param>
     /// <param name="password"></param>
     /// <returns>RoleId</returns>
-    private int ValidateAgent(string username, string password,out int custId)
+    private ValidationResult ValidateAgent(string username, string password)
     {
         int serverId = int.Parse(System.Configuration.ConfigurationManager.AppSettings["server_id"]);
         string site = System.Configuration.ConfigurationManager.AppSettings["site"];
         string ip = Context.Request.UserHostAddress;
-        int roleId;
-        IBCDLL.DAL.DataResult rs = IBCDLL.UserController.AuthenticateAgent(username, password, serverId, ip, site, out roleId, out custId);
-        return roleId;
+       
+        var validateResult = new AuthenticateDataAccess().ValidateAgentLevel(username, password, serverId, ip, site);
+        try
+        {
+            if (validateResult.Error.ErrorCode == 109 && validateResult.Customer.SubAccountId == 0)
+            {
+                CasinoLibrary.SBAgent.Customer customer = new CasinoLibrary.SBAgent.Customer();
+                customer.UpdateCustClosedWrongPwd(validateResult.Customer.CustId, true, ip);
+            }
+        }
+        catch (Exception ex)
+        {
+            LogService.WriteLog(ex);
+        }
+
+        return validateResult;
     }
 
     public bool IsValidMember(int custId, string username, int roleId)

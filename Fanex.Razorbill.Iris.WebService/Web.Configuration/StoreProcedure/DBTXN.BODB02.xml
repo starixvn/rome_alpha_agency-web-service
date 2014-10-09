@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+  <Function Name="API - Authentication">
+    <Setting Key="Age_LoginDownline_API" SpName="Age_LoginDownline_API" DbName="DBTXN.BODB02.BODBDownlineNet"  />
+  </Function>
+</Functions>

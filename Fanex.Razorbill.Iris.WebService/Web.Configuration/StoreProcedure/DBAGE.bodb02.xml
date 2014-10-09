@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+  <Function Name="API - Bet list">
+    <Setting Key="Age_BetList_SelRunningAll_API" SpName="Age_BetList_SelRunningAll_API" DbName="DBAGE.bodb02.BODBDownlineNet"  />
+    <Setting Key="Age_BetList_SelWinLossAll_API" SpName="Age_BetList_SelWinLossAll_API" DbName="DBAGE.bodb02.BODBDownlineNet"  />
+  </Function>
+  <Function Name="API - Common">
+    <Setting Key="Age_SelBalanceUpDay" SpName="Age_SelBalanceUpDay" DbName="DBAGE.bodb02.BODBDownlineNet" Plain="0" />
+  </Function>
+</Functions>
