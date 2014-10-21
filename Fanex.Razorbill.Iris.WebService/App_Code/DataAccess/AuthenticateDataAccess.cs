@@ -45,6 +45,7 @@ namespace Fanex.Razorbill.Iris.Webservice
                 parameters.Add("masterusername", string.Empty);
                 parameters.Add("subaccid", 0);
                 parameters.Add("site", site);
+                parameters.Add("ErrCode", 0);
 
                 objDb.AssignParamValues(parameters);
                 objDb.ExecuteNonQuery();
@@ -54,7 +55,7 @@ namespace Fanex.Razorbill.Iris.Webservice
                 {
                     Error = new ErrorResult()
                     {
-                        ErrorCode =  0, // Converter.ToInt(output["errcode"]),
+                        ErrorCode = Converter.ToInt(output["ErrCode"]),
                         ErrorMessage = string.Empty //Converter.ToString2(output["errmsg"])
                     },
                     Customer = new CustomerInfo()

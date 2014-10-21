@@ -27,3 +27,6 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+
+/Fanex.Razorbill.Iris.WebService/Logs
+/Fanex.Razorbill.Iris.WebService/Logs

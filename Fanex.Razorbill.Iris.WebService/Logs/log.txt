@@ -110,3 +110,125 @@
    at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
    at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
    at AgentReport.GetAgentBetListWinLoss(String date) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 67
+2014-10-20 15:22:55,837 [10932] ERROR LogService [(null)] - Fanex.Data.ObjectDbException: @errcode is not a parameter for procedure Age_LoginDownline_API. ---> System.Data.SqlClient.SqlException: @errcode is not a parameter for procedure Age_LoginDownline_API.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   --- End of inner exception stack trace ---
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 51
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-20 15:23:26,033 [9388] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 33
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-20 15:23:36,009 [9388] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 33
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-20 15:25:41,168 [9388] ERROR LogService [(null)] - Fanex.Data.ObjectDbException: @ErrCode is not a parameter for procedure Age_LoginDownline_API. ---> System.Data.SqlClient.SqlException: @ErrCode is not a parameter for procedure Age_LoginDownline_API.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   --- End of inner exception stack trace ---
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 51
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-20 15:30:52,259 [9440] ERROR LogService [(null)] - Fanex.Data.ObjectDbException: Failed to convert parameter value from a String to a Int32. ---> System.FormatException: Failed to convert parameter value from a String to a Int32. ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.String.System.IConvertible.ToInt32(IFormatProvider provider)
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at System.Data.SqlClient.SqlParameter.CoerceValue(Object value, MetaType destinationType)
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlParameter.CoerceValue(Object value, MetaType destinationType)
+   at System.Data.SqlClient.SqlParameter.GetCoercedValue()
+   at System.Data.SqlClient.SqlParameter.Validate(Int32 index, Boolean isCommandProc)
+   at System.Data.SqlClient.SqlCommand.SetUpRPCParameters(_SqlRPC rpc, Int32 startCount, Boolean inSchema, SqlParameterCollection parameters)
+   at System.Data.SqlClient.SqlCommand.BuildRPC(Boolean inSchema, SqlParameterCollection parameters, _SqlRPC& rpc)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   --- End of inner exception stack trace ---
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 51
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-20 15:32:02,522 [9440] ERROR LogService [(null)] - Fanex.Data.ObjectDbException: Wrong username or password. ---> System.Data.SqlClient.SqlException: Wrong username or password.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   --- End of inner exception stack trace ---
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 51
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-20 15:33:34,177 [9440] ERROR LogService [(null)] - Fanex.Data.ObjectDbException: Wrong username or password. ---> System.Data.SqlClient.SqlException: Wrong username or password.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.DoExecuteNonQuery(DbCommand command)
+   at Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteNonQuery(DbCommand command)
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   --- End of inner exception stack trace ---
+   at Fanex.Data.ObjectDb.ExecuteNonQuery()
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 51
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-21 13:42:30,255 [9556] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 33
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
