@@ -3,9 +3,9 @@
 <script runat="server">
 
     void Application_Start(object sender, EventArgs e) 
-    {
+    {        
         // Code that runs on application startup
-
+        Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
     }
     
     void Application_End(object sender, EventArgs e) 
@@ -23,7 +23,8 @@
     void Session_Start(object sender, EventArgs e) 
     {
         // Code that runs when a new session is started
-        Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
+        //Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
+        //CasinoSetting.SettingMgr.GetInstance().Initialize(CasinoSetting.SiteEnum.AgentSite);
 
     }
 

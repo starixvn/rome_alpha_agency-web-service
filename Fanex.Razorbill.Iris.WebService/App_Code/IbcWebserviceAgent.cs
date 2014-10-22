@@ -15,13 +15,17 @@ public class IbcWebserviceAgent:System.Web.Services.WebService
 {
     public AuthHeader AuthHeaderValue;
     
-    public bool  IsValidAgent(int agentType, out int custId)
+    public bool IsValidAgent(int agentType, out int custId)
     {
         if (System.Configuration.ConfigurationManager.AppSettings["testing"] == "1")
-        {
+        {            
             custId = 1176086;
             AuthHeaderValue = new AuthHeader();
-            AuthHeaderValue.Id = IBCDLL.UserController.GetUsernameById(custId.ToString());
+            var getCustomerInfo = new AuthenticateDataAccess().GetSMAInformation(custId);
+            if (getCustomerInfo != null)
+            {
+                AuthHeaderValue.Id = getCustomerInfo.AgentName;
+            }
 
             return true;
         }
@@ -46,7 +50,8 @@ public class IbcWebserviceAgent:System.Web.Services.WebService
         var validateResult = new AuthenticateDataAccess().ValidateAgentLevel(username, password, serverId, ip, site);
         try
         {
-            if (validateResult.Error.ErrorCode == 109 && validateResult.Customer.SubAccountId == 0)
+            if (validateResult.Error.ErrorCode == 109 && 
+                validateResult.Customer.SubAccountId == 0)
             {
                 CasinoLibrary.SBAgent.Customer customer = new CasinoLibrary.SBAgent.Customer();
                 customer.UpdateCustClosedWrongPwd(validateResult.Customer.CustId, true, ip);

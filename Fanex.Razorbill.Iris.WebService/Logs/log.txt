@@ -232,3 +232,493 @@
    at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
    at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
    at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-21 15:33:21,084 [3460] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 33
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-21 15:33:32,309 [6844] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 33
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-21 17:20:01,816 [8196] ERROR LogService [(null)] - System.IO.FileNotFoundException: Could not load file or assembly 'NetUtility, Version=1.0.3492.30464, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+File name: 'NetUtility, Version=1.0.3492.30464, Culture=neutral, PublicKeyToken=null'
+
+Server stack trace: 
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+
+=== Pre-bind state information ===
+LOG: User = SPVN\kevin.mai
+LOG: DisplayName = NetUtility, Version=1.0.3492.30464, Culture=neutral, PublicKeyToken=null
+ (Fully-specified)
+LOG: Appbase = file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/
+LOG: Initial PrivatePath = D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\bin
+Calling assembly : CasinoLibrary, Version=1.0.0.24, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/NetUtility.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/NetUtility/NetUtility.DLL.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/NetUtility.DLL.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/NetUtility/NetUtility.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/NetUtility.EXE.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/NetUtility/NetUtility.EXE.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/NetUtility.EXE.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/NetUtility/NetUtility.EXE.
+
+2014-10-21 17:22:39,934 [12008] ERROR LogService [(null)] - System.IO.FileNotFoundException: Could not load file or assembly 'NetUtility, Version=1.0.3492.30464, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+File name: 'NetUtility, Version=1.0.3492.30464, Culture=neutral, PublicKeyToken=null'
+
+Server stack trace: 
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+
+=== Pre-bind state information ===
+LOG: User = SPVN\kevin.mai
+LOG: DisplayName = NetUtility, Version=1.0.3492.30464, Culture=neutral, PublicKeyToken=null
+ (Fully-specified)
+LOG: Appbase = file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/
+LOG: Initial PrivatePath = D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\bin
+Calling assembly : CasinoLibrary, Version=1.0.0.24, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2014-10-21 17:31:37,792 [13052] ERROR LogService [(null)] - System.IO.FileNotFoundException: Could not load file or assembly 'NetUtility, Version=1.0.3492.30464, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+File name: 'NetUtility, Version=1.0.3492.30464, Culture=neutral, PublicKeyToken=null'
+
+Server stack trace: 
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+
+=== Pre-bind state information ===
+LOG: User = SPVN\kevin.mai
+LOG: DisplayName = NetUtility, Version=1.0.3492.30464, Culture=neutral, PublicKeyToken=null
+ (Fully-specified)
+LOG: Appbase = file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/
+LOG: Initial PrivatePath = D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\bin
+Calling assembly : CasinoLibrary, Version=1.0.0.24, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2014-10-21 17:34:43,933 [11612] ERROR LogService [(null)] - System.IO.FileNotFoundException: Could not load file or assembly 'ILogger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+File name: 'ILogger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'
+
+Server stack trace: 
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+
+=== Pre-bind state information ===
+LOG: User = SPVN\kevin.mai
+LOG: DisplayName = ILogger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+ (Fully-specified)
+LOG: Appbase = file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/
+LOG: Initial PrivatePath = D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\bin
+Calling assembly : CasinoLibrary, Version=1.0.0.24, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/ILogger.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/ILogger/ILogger.DLL.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/ILogger.DLL.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/ILogger/ILogger.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/ILogger.EXE.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/ILogger/ILogger.EXE.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/ILogger.EXE.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/ILogger/ILogger.EXE.
+
+2014-10-21 17:36:43,155 [11048] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 33
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-21 17:37:01,699 [11048] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.ValidateAgentLevel(String username, String password, Int32 serverId, String clientIP, String site) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 33
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 46
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-21 17:39:07,117 [12000] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at System.Activator.GetObject(Type type, String url)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-21 17:42:01,819 [12000] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-21 17:44:23,925 [12000] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at System.Activator.GetObject(Type type, String url)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-21 17:53:31,897 [11000] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at System.Activator.GetObject(Type type, String url)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-21 18:00:20,657 [13108] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-21 18:04:39,698 [7732] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-21 18:06:59,138 [8324] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP) in D:\NexcelProjects\3rd_Projects\CasinoLibrary\SBAgent\Customer.cs:line 3364
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-21 18:13:36,849 [12580] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP) in D:\NexcelProjects\3rd_Projects\CasinoLibrary\SBAgent\Customer.cs:line 3364
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-21 18:13:57,824 [11084] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP) in D:\NexcelProjects\3rd_Projects\CasinoLibrary\SBAgent\Customer.cs:line 3364
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-22 09:27:35,587 [6768] ERROR LogService [(null)] - System.ArgumentNullException: Value cannot be null.
+Parameter name: url
+
+Server stack trace: 
+   at System.Runtime.Remoting.RemotingServices.Unmarshal(Type classToProxy, String url, Object data)
+   at System.Activator.GetObject(Type type, String url, Object state)
+   at System.Activator.GetObject(Type type, String url)
+   at ILogger.Service.NewInstance()
+   at ILogger.Service.WriteLog(String logContent)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP) in D:\NexcelProjects\3rd_Projects\CasinoLibrary\SBAgent\Customer.cs:line 3364
+   at System.Runtime.Remoting.Messaging.Message.Dispatch(Object target, Boolean fExecuteInContext)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CasinoLibrary.SBAgent.Customer.UpdateCustClosedWrongPwd(Int32 intIBCCustID, Boolean Closed, String FromIP)
+   at IbcWebserviceAgent.ValidateAgent(String username, String password) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 52
+2014-10-22 09:30:34,761 [8160] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-22 09:30:50,915 [8128] ERROR LogService [(null)] - System.NullReferenceException: Object reference not set to an instance of an object.
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 29
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-22 09:31:09,721 [8160] ERROR LogService [(null)] - System.IO.FileLoadException: Could not load file or assembly 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+File name: 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
+   at IBCDLL.DAL.CommandFactory.getConnectionString(Int32 type)
+   at IBCDLL.DAL.DataServices.exec(String spName, Hashtable parameters, Int32 databaseType, Int32 connectionTimeout, Int32 commandType)
+   at IBCDLL.DAL.DataServices.Execute(String spName, Hashtable parameters, Int32 databaseType)
+   at IBCDLL.UserController.GetUsernameById(String id)
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 24
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+
+=== Pre-bind state information ===
+LOG: User = SPVN\kevin.mai
+LOG: DisplayName = Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+ (Fully-specified)
+LOG: Appbase = file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/
+LOG: Initial PrivatePath = D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\bin
+Calling assembly : IBCDLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+WRN: Comparing the assembly name resulted in the mismatch: Major Version
+ERR: Failed to complete setup of assembly (hr = 0x80131040). Probing terminated.
+
+2014-10-22 09:31:31,150 [8128] ERROR LogService [(null)] - System.IO.FileLoadException: Could not load file or assembly 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+File name: 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
+   at IBCDLL.DAL.CommandFactory.getConnectionString(Int32 type)
+   at IBCDLL.DAL.DataServices.exec(String spName, Hashtable parameters, Int32 databaseType, Int32 connectionTimeout, Int32 commandType)
+   at IBCDLL.DAL.DataServices.Execute(String spName, Hashtable parameters, Int32 databaseType)
+   at IBCDLL.UserController.GetUsernameById(String id)
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 24
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+
+=== Pre-bind state information ===
+LOG: User = SPVN\kevin.mai
+LOG: DisplayName = Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+ (Fully-specified)
+LOG: Appbase = file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/
+LOG: Initial PrivatePath = D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\bin
+Calling assembly : IBCDLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+WRN: Comparing the assembly name resulted in the mismatch: Major Version
+ERR: Failed to complete setup of assembly (hr = 0x80131040). Probing terminated.
+
+2014-10-22 09:31:45,470 [8128] ERROR LogService [(null)] - System.IO.FileLoadException: Could not load file or assembly 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+File name: 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
+   at IBCDLL.DAL.CommandFactory.getConnectionString(Int32 type)
+   at IBCDLL.DAL.DataServices.exec(String spName, Hashtable parameters, Int32 databaseType, Int32 connectionTimeout, Int32 commandType)
+   at IBCDLL.DAL.DataServices.Execute(String spName, Hashtable parameters, Int32 databaseType)
+   at IBCDLL.UserController.GetUsernameById(String id)
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 24
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+
+=== Pre-bind state information ===
+LOG: User = SPVN\kevin.mai
+LOG: DisplayName = Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+ (Fully-specified)
+LOG: Appbase = file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/
+LOG: Initial PrivatePath = D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\bin
+Calling assembly : IBCDLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+WRN: Comparing the assembly name resulted in the mismatch: Major Version
+ERR: Failed to complete setup of assembly (hr = 0x80131040). Probing terminated.
+
+2014-10-22 09:35:36,560 [8128] ERROR LogService [(null)] - System.IO.FileLoadException: Could not load file or assembly 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+File name: 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
+   at IBCDLL.DAL.CommandFactory.getConnectionString(Int32 type)
+   at IBCDLL.DAL.DataServices.exec(String spName, Hashtable parameters, Int32 databaseType, Int32 connectionTimeout, Int32 commandType)
+   at IBCDLL.DAL.DataServices.Execute(String spName, Hashtable parameters, Int32 databaseType)
+   at IBCDLL.UserController.GetUsernameById(String id)
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 24
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+
+=== Pre-bind state information ===
+LOG: User = SPVN\kevin.mai
+LOG: DisplayName = Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+ (Fully-specified)
+LOG: Appbase = file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/
+LOG: Initial PrivatePath = D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\bin
+Calling assembly : IBCDLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+WRN: Comparing the assembly name resulted in the mismatch: Major Version
+ERR: Failed to complete setup of assembly (hr = 0x80131040). Probing terminated.
+
+2014-10-22 09:35:58,817 [8000] ERROR LogService [(null)] - System.IO.FileLoadException: Could not load file or assembly 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+File name: 'Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
+   at IBCDLL.DAL.CommandFactory.getConnectionString(Int32 type)
+   at IBCDLL.DAL.DataServices.exec(String spName, Hashtable parameters, Int32 databaseType, Int32 connectionTimeout, Int32 commandType)
+   at IBCDLL.DAL.DataServices.Execute(String spName, Hashtable parameters, Int32 databaseType)
+   at IBCDLL.UserController.GetUsernameById(String id)
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 24
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+
+=== Pre-bind state information ===
+LOG: User = SPVN\kevin.mai
+LOG: DisplayName = Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+ (Fully-specified)
+LOG: Appbase = file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/
+LOG: Initial PrivatePath = D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\bin
+Calling assembly : IBCDLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: Microsoft.Practices.EnterpriseLibrary.Caching, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/fanex.razorbill.iris.webservice/b5832cb6/8155a227/Microsoft.Practices.EnterpriseLibrary.Caching/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+LOG: Attempting download of new URL file:///D:/NexcelProjects/_GITLAB/Agency/_I1_Master/agency-web-service/Fanex.Razorbill.Iris.WebService/bin/Microsoft.Practices.EnterpriseLibrary.Caching.DLL.
+WRN: Comparing the assembly name resulted in the mismatch: Major Version
+ERR: Failed to complete setup of assembly (hr = 0x80131040). Probing terminated.
+
+2014-10-22 09:58:25,697 [6528] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.GetSMAInformation(Int32 custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 80
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 24
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37
+2014-10-22 09:58:38,341 [6528] ERROR LogService [(null)] - System.NullReferenceException: Data source is null, or has not been started!
+   at Fanex.Data.Configuration.DbSettingProviderBase.GetSetting(String key)
+   at Fanex.Data.ObjectDb..ctor(String key, Int32 commandTimeOut)
+   at Fanex.Razorbill.Iris.Webservice.AuthenticateDataAccess.GetSMAInformation(Int32 custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\DataAccess\AuthenticateDataAccess.cs:line 80
+   at IbcWebserviceAgent.IsValidAgent(Int32 agentType, Int32& custId) in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\IbcWebserviceAgent.cs:line 24
+   at AgentReport.GetAgentBetListRunning() in d:\NexcelProjects\_GITLAB\Agency\_I1_Master\agency-web-service\Fanex.Razorbill.Iris.WebService\App_Code\AgentReport.cs:line 37

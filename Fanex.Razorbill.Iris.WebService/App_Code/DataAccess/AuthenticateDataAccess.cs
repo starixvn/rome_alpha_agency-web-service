@@ -45,7 +45,8 @@ namespace Fanex.Razorbill.Iris.Webservice
                 parameters.Add("masterusername", string.Empty);
                 parameters.Add("subaccid", 0);
                 parameters.Add("site", site);
-                parameters.Add("ErrCode", 0);
+                parameters.Add("errcode", 0);
+                parameters.Add("errmsg", string.Empty);
 
                 objDb.AssignParamValues(parameters);
                 objDb.ExecuteNonQuery();
@@ -55,8 +56,8 @@ namespace Fanex.Razorbill.Iris.Webservice
                 {
                     Error = new ErrorResult()
                     {
-                        ErrorCode = Converter.ToInt(output["ErrCode"]),
-                        ErrorMessage = string.Empty //Converter.ToString2(output["errmsg"])
+                        ErrorCode = Converter.ToInt(output["errcode"]),
+                        ErrorMessage = Converter.ToString2(output["errmsg"])
                     },
                     Customer = new CustomerInfo()
                     {
@@ -71,6 +72,31 @@ namespace Fanex.Razorbill.Iris.Webservice
                     }
                 };
             }
+        }
+
+        public SMAInfo GetSMAInformation(int custId)
+        {
+            var result = new SMAInfo(); 
+            using (ObjectDb objDb = new ObjectDb("DBA_GetAgent"))
+            {
+                objDb.AssignParamValues(new Hashtable()
+                {
+                    {"inputuser", custId}
+                });
+
+                var dataReader = objDb.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    result.SuperId = Converter.ToInt(dataReader["superid"]);
+                    result.SuperName = Converter.ToString2(dataReader["supername"]);
+                    result.MasterId = Converter.ToInt(dataReader["masterid"]);
+                    result.MasterName = Converter.ToString2(dataReader["mastername"]);
+                    result.AgentId = Converter.ToInt(dataReader["agentid"]);
+                    result.AgentName = Converter.ToString2(dataReader["agentname"]);
+                }
+            }
+
+            return result;
         }
     }
 }
