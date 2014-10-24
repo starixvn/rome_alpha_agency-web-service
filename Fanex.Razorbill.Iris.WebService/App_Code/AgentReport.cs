@@ -28,21 +28,21 @@ public class AgentReport : IbcWebserviceAgent
     /// <returns></returns>
     [WebMethod]
     [SoapHeader("AuthHeaderValue")]
-    public BetListRunning GetAgentBetListRunning()
+    public AgentBetListRunning GetAgentBetListRunning()
     {
         int agentId;
-        BetListRunning result = null;
+        AgentBetListRunning result = null;
         try
         {
             if (!IsValidAgent(UserInfo.ROLE_AGENT, out agentId))
             {
-                result = new BetListRunning();
+                result = new AgentBetListRunning();
                 result.ErrorCode = IbcError.USERID_INVALID;
                 result.ErrorMsg = IbcError.USERID_INVALID_MSG;
             }
             else
             {
-                result = BetListRunning.GetReports(agentId);
+                result = AgentBetListRunning.GetReports(agentId);
             }
         }
         catch (Exception e)

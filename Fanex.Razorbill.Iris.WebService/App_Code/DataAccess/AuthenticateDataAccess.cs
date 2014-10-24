@@ -28,6 +28,7 @@ namespace Fanex.Razorbill.Iris.Webservice
         /// <param name="serverId">Server ID.</param>
         /// <param name="clientIP">Client IP.</param>
         /// <param name="site">System name.</param>
+        /// <returns>Return validate result.</returns>
         public ValidationResult ValidateAgentLevel(string username, string password, int serverId, string clientIP, string site)
         {
             using (ObjectDb objDb = new ObjectDb("Age_LoginDownline_API"))
@@ -74,6 +75,11 @@ namespace Fanex.Razorbill.Iris.Webservice
             }
         }
 
+        /// <summary>
+        /// Get SMA Information.
+        /// </summary>
+        /// <param name="custId">Customer ID.</param>
+        /// <returns>Return SMA information.</returns>
         public SMAInfo GetSMAInformation(int custId)
         {
             var result = new SMAInfo(); 
@@ -81,7 +87,7 @@ namespace Fanex.Razorbill.Iris.Webservice
             {
                 objDb.AssignParamValues(new Hashtable()
                 {
-                    {"inputuser", custId}
+                    { "inputuser", custId }
                 });
 
                 var dataReader = objDb.ExecuteReader();

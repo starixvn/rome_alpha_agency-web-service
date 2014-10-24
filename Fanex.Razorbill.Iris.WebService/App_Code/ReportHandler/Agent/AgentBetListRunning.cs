@@ -12,12 +12,12 @@ using System.Collections.Generic;
 /// Summary description for AgentBetListRunning
 /// </summary>
 
-public class BetListRunning:IbcError
+public class AgentBetListRunning : IbcError
 {
     public AgentBetListRunningRow[] Rows;
-    public static BetListRunning GetReports(int custAgentId)
+    public static AgentBetListRunning GetReports(int custAgentId)
     {
-        BetListRunning report = new BetListRunning();
+        AgentBetListRunning report = new AgentBetListRunning();
 
         try
         {
