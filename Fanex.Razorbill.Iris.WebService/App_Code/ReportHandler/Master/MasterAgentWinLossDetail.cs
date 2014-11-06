@@ -125,6 +125,7 @@ public class MasterAgentWinLossDetail : IbcError
         }
         catch(Exception ex)
         {
+            LogService.WriteLog(ex);
             report.ErrorCode = IbcError.INTERNAL_ERROR;
             report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
         }

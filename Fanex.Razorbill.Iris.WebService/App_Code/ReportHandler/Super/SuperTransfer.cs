@@ -56,6 +56,7 @@ public class SuperTransfer:IbcError
         }
         catch (Exception ex)
         {
+            LogService.WriteLog(ex);
             try
             {
                 report.ErrorCode = FormatHandler.GetInt(dr.OutputResults["errcode"]);

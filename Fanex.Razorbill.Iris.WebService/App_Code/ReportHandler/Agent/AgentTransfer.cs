@@ -54,6 +54,7 @@ public class AgentTransfer:IbcError
         }
         catch(Exception ex)
         {
+            LogService.WriteLog(ex);
             report.ErrorCode = FormatHandler.GetInt(dr.OutputResults["errcode"]);
             report.ErrorMsg = dr.OutputResults["errmsg"].ToString();
         }
