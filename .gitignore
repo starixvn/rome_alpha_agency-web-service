@@ -19,7 +19,6 @@ Thumbs.db
 *.cache
 *.ilk
 *.log
-[Bb]in
 [Dd]ebug*/
 *.lib
 *.sbr
@@ -31,3 +30,4 @@ _ReSharper*/
 /Fanex.Razorbill.Iris.WebService/Logs
 /Fanex.Razorbill.Iris.WebService/Logs
 packages/
+/.vs/config/applicationhost.config

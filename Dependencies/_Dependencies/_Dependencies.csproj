@@ -56,24 +56,24 @@
       <HintPath>..\GotDotNet.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\IBCCrypt.dll</HintPath>
+      <HintPath>..\..\packages\IBCCrypt.1.1.0.0\lib\IBCCrypt.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="IBCDBLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\IBCDBLibrary.dll</HintPath>
+      <HintPath>..\..\packages\IBCDBLibrary.1.0.0.0\lib\net40\IBCDBLibrary.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="IBCDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\IBCDLL.dll</HintPath>
     </Reference>
     <Reference Include="IBCFile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\IBCFile.dll</HintPath>
+      <HintPath>..\..\packages\IBCFile.1.0.0.0\lib\net40\IBCFile.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="IBCUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\IBCUtils.dll</HintPath>
+      <HintPath>..\..\packages\Fanex.Utils.1.0.0\lib\net40\IBCUtils.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="ILogger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
