@@ -36,7 +36,7 @@ public class AgentReport2 : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -55,7 +55,7 @@ public class AgentReport2 : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }

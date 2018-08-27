@@ -55,7 +55,7 @@ public class MasterTransfer:IbcError
         }
         catch (Exception ex)
         {
-            LogService.WriteLog(ex);
+            Fanex.Logging.LogService.Error(ex.ToString());
             report.ErrorCode = FormatHandler.GetInt(dr.OutputResults["errcode"]);
             report.ErrorMsg = dr.OutputResults["errmsg"].ToString();
         }

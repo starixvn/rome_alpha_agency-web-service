@@ -49,7 +49,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -81,7 +81,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -113,7 +113,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -146,7 +146,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -172,7 +172,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -205,7 +205,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -237,7 +237,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -272,7 +272,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -297,7 +297,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -366,7 +366,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
     
         return result;
@@ -410,7 +410,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -441,7 +441,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -475,7 +475,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -511,7 +511,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -547,7 +547,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -584,7 +584,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -625,7 +625,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -667,7 +667,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -700,7 +700,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }
@@ -742,7 +742,7 @@ public class MasterReport : IbcWebserviceAgent
         }
         catch (Exception e)
         {
-            LogService.WriteLog(e);
+            Fanex.Logging.LogService.Error(e.ToString());
         }
         return result;
     }

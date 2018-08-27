@@ -59,7 +59,7 @@ public class IbcWebserviceAgent:System.Web.Services.WebService
         }
         catch (Exception ex)
         {
-            LogService.WriteLog(ex);
+            Fanex.Logging.LogService.Error(ex.ToString());
         }
 
         return validateResult;

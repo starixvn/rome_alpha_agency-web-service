@@ -163,8 +163,9 @@ public class AgentBetListWinLoss:IbcError
                 }
             }
         }
-        catch
+        catch (Exception ex)
         {
+            Fanex.Logging.LogService.Error(ex.ToString());
             return report;
         }
     }

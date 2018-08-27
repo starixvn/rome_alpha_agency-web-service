@@ -263,8 +263,9 @@ public class MemberBetLists:IbcError
                         {
                             row.Matchs = GetMixParlayReport(dr["refno"].ToString(), language);
                         }
-                        catch
+                        catch (Exception ex)
                         {
+                            Fanex.Logging.LogService.Error(ex.ToString());
                             report.ErrorCode = IbcError.INTERNAL_ERROR;
                             report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
                         }
@@ -391,8 +392,9 @@ public class MemberBetLists:IbcError
                         {
                             row.Matchs = GetMixParlayReport(dr["refno"].ToString(), language);
                         }
-                        catch
+                        catch (Exception ex)
                         {
+                            Fanex.Logging.LogService.Error(ex.ToString());
                             report.ErrorCode = IbcError.INTERNAL_ERROR;
                             report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
                         }
@@ -601,8 +603,9 @@ public class MemberBetLists2 : IbcError
                         {
                             row.Matchs = MemberBetLists.GetMixParlayReport(dr["refno"].ToString(), language);
                         }
-                        catch
-                        { 
+                        catch (Exception ex)
+                        {
+                            Fanex.Logging.LogService.Error(ex.ToString());
                             report.ErrorCode = IbcError.INTERNAL_ERROR;
                             report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
                         }
@@ -786,8 +789,9 @@ public class MemberBetLists3 : IbcError
                         {
                             row.Matchs = MemberBetLists.GetMixParlayReport(dr["refno"].ToString(), language);
                         }
-                        catch
+                        catch (Exception ex)
                         {
+                            Fanex.Logging.LogService.Error(ex.ToString());
                             report.ErrorCode = IbcError.INTERNAL_ERROR;
                             report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
                         }
@@ -970,8 +974,9 @@ public class MemberBetLists4:IbcError
                             {
                                 row.Matchs = MemberBetLists.GetMixParlayReport(dr["refno"].ToString(), language);
                             }
-                            catch
+                            catch (Exception ex)
                             {
+                                Fanex.Logging.LogService.Error(ex.ToString());
                                 report.ErrorCode = IbcError.INTERNAL_ERROR;
                                 report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
                             }
@@ -991,8 +996,9 @@ public class MemberBetLists4:IbcError
                 }// end if(dr == null)
             }// end using
         }
-        catch
+        catch (Exception ex)
         {
+            Fanex.Logging.LogService.Error(ex.ToString());
             report.ErrorCode = IbcError.INTERNAL_ERROR;
             report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;        
         }

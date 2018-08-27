@@ -6,6 +6,7 @@ using IBCDLL.DAL;
 using IBCUtils;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// CITS
@@ -149,8 +150,9 @@ public class AgentBetListRunning : IbcError
                 }
             }
         }
-        catch
+        catch (Exception ex)
         {
+            Fanex.Logging.LogService.Error(ex.ToString());
             return report;
         }
     }

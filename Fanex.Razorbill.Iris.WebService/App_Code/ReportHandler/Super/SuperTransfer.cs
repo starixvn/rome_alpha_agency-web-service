@@ -56,14 +56,15 @@ public class SuperTransfer:IbcError
         }
         catch (Exception ex)
         {
-            LogService.WriteLog(ex);
+            Fanex.Logging.LogService.Error(ex.ToString());
             try
             {
                 report.ErrorCode = FormatHandler.GetInt(dr.OutputResults["errcode"]);
                 report.ErrorMsg = dr.OutputResults["errmsg"].ToString();
             }
-            catch
+            catch (Exception e)
             {
+                Fanex.Logging.LogService.Error(e.ToString());
                 report.ErrorCode = IbcError.INTERNAL_ERROR;
                 report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
             }

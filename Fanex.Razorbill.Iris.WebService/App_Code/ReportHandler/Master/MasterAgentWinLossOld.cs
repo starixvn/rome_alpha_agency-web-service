@@ -123,8 +123,9 @@ public class MasterAgentWinLossOld : IbcError
             }//end using
 
         }
-        catch
+        catch (Exception ex)
         {
+            Fanex.Logging.LogService.Error(ex.ToString());
             report.ErrorCode = IbcError.INTERNAL_ERROR;
             report.ErrorMsg = IbcError.INTERNAL_ERROR_MSG;
         }
