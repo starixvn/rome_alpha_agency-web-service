@@ -22,7 +22,7 @@ public static class CacheRef
     }
     public static string GetBettype(object bettypeID)
     {
-        return RefService.GetBetTypeName(bettypeID.ToString(), Language);
+        return bettypeID.ToString() == "0" ? string.Empty : RefService.GetBetTypeName(bettypeID.ToString(), Language);
     }
 
     public static string GetSportName(object sportID)
@@ -41,6 +41,6 @@ public static class CacheRef
     }
     public static string GetOddsTypeName(object oddsTypeId)
     {
-        return RefService.GetOddsTypeName(oddsTypeId.ToString(), Language,string.Empty);        
+        return oddsTypeId.ToString() == "0" ? string.Empty : RefService.GetOddsTypeName(oddsTypeId.ToString(), Language,string.Empty);        
     }    
 }
