@@ -1,0 +1,5 @@
+C:\Users\rocketor.vn\AppData\Roaming\NuGet\nuget.exe restore "Fanex.Razorbill.Iris.sln"
+
+"C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" "Dependencies\_Dependencies.csproj"
+
+exit
