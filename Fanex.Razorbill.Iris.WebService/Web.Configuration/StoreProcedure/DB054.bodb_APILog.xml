@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+  <Function Name="API - Write Log">
+    <Setting Key="API_WriteLog_UserLog_APILog_RunSP" SpName="API_WriteLog_UserLog_APILog_RunSP" DbName="DB054.bodb_APILog.BODBDownlineNet"  />
+  </Function>
+</Functions>

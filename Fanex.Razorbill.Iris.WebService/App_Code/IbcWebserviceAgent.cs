@@ -15,10 +15,17 @@ public class IbcWebserviceAgent:System.Web.Services.WebService
 {
     public AuthHeader AuthHeaderValue;
     
+    public bool IsValidAgent(int agentType, out int custId, out string custName)
+    {
+        custName = AuthHeaderValue.Id;
+
+        return IsValidAgent(agentType,out custId);
+    }
+
     public bool IsValidAgent(int agentType, out int custId)
     {
         if (System.Configuration.ConfigurationManager.AppSettings["testing"] == "1")
-        {            
+        {
             custId = 1176086;
             AuthHeaderValue = new AuthHeader();
             var getCustomerInfo = new AuthenticateDataAccess().GetSMAInformation(custId);
@@ -35,6 +42,7 @@ public class IbcWebserviceAgent:System.Web.Services.WebService
 
         return (validateResult.Customer.RoleId == agentType);
     }
+
     /// <summary>
     /// 
     /// </summary>
