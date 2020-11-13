@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions>
   <Function Name="API - Bet list">
-    <Setting Key="Age_BetList_SelRunningAll_API" SpName="Age_BetList_SelRunning_API" DbName="DB042.bodb02.BODBDownlineNet"  />
+    <Setting Key="Age_BetList_SelRunningAll_API" SpName="Age_BetList_SelRunning_API" DbName="DBBOF.bodb02.BODBDownlineNet"  />
     <Setting Key="Age_BetList_SelWinLossAll_API" SpName="Age_BetList_SelWinLossAll_API" DbName="DBAGE.bodb02.BODBDownlineNet"  />
   </Function>
   
