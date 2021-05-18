@@ -2,9 +2,12 @@
 <%@ Import Namespace="Fanex.RemotingRef" %>
 
 <script runat="server">
-
     void Application_Start(object sender, EventArgs e)
     {
+        Fanex.Logging.LogManager
+            .SetDefaultLogCategory(ConfigurationManager.AppSettings["Fanex.Logging:DefaultCategory"])
+            .Use(new Fanex.Logging.RabbitMQ.RabbitMQLogging(ConfigurationManager.AppSettings["Fanex.Logging:RabbitMQConnectionStrings"]));
+
         RefDataTypeContainer
             .ConnectTo(new Uri(ConfigurationManager.AppSettings["RemoteRefURL"]))
             .FromApplication("Alpha.Betlist.API");
@@ -16,13 +19,11 @@
     void Application_End(object sender, EventArgs e)
     {
         //  Code that runs on application shutdown
-
     }
 
     void Application_Error(object sender, EventArgs e)
     {
         // Code that runs when an unhandled error occurs
-
     }
 
     void Session_Start(object sender, EventArgs e)
@@ -30,7 +31,6 @@
         // Code that runs when a new session is started
         //Fanex.Data.Configuration.DbSettingProviderManager.Current.Start();
         //CasinoSetting.SettingMgr.GetInstance().Initialize(CasinoSetting.SiteEnum.AgentSite);
-
     }
 
     void Session_End(object sender, EventArgs e)
@@ -39,7 +39,5 @@
         // Note: The Session_End event is raised only when the sessionstate mode
         // is set to InProc in the Web.config file. If session mode is set to StateServer 
         // or SQLServer, the event is not raised.
-
     }
-
 </script>
